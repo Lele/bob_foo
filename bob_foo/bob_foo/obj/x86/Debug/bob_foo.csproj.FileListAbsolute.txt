@@ -1,0 +1,7 @@
+C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob01.xnb
+C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\bob_foo.exe
+C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\bob_foo.pdb
+C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\obj\x86\Debug\bob_foo.exe
+C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\obj\x86\Debug\bob_foo.pdb
