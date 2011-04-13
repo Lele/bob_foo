@@ -3,4 +3,46 @@ bob_foo v0.0.1-pre-alpha
 Repository for the computer graphics project. 
 n00bs not allowed!
 
+
+
+#######################################
+GIT INSTRUCTION
+#######################################
+
+http://help.github.com/win-set-up-git/
+http://help.github.com/linux-set-up-git/ (per linux)
+dopo aver installato git, creato l'account github, creato la chiave ssh dovete dire a Lele di aggiungervi alla condivisione del repo.
+
+* per creare il repo in locale su cui lavorare:
+git clone git@github.com:Lele/bob_foo.git
+* per aggiornare cioè ottenere un repo locale sincronizzato con quello remoto (il repo remoto è presente sull'account di Lele)
+git pull
+* fare le modifiche che si devono fare
+* se si aggiungono file
+git add nomefile
+* quando si ha finito (per rendere effettive le modifiche in locale)
+git commit -a -m 'breve descrizione modifica'
+* per aggiornare il repository remoto
+git push origin master   
+
+FINITO.
+
+ogni volta che volete avere la versione aggiornata andate nella directory "bob_foo" e lanciate un:
+git pull
+
+
+
+#######################################
+STRUCTURE (contenuto)
+#######################################
+
+.git = git hidden directory
+bob_foo = project directory (contiene bob_foo (classi) e bob_fooContent(texture,modelli e altro))
+bob_foo.sln = file Microsoft Visual Studio Solution
+bob_foo.suo = file Visual Studio Solution User Options
+
+
+#######################################
+
+
 debo
