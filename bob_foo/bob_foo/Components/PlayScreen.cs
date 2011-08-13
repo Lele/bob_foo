@@ -74,7 +74,8 @@ namespace bob_foo.Components
         public PlayScreen(Game game)
             :base(game)
         {
-           
+            this.Enabled = false;
+            this.Visible = false;
         }
 
         /// <summary>

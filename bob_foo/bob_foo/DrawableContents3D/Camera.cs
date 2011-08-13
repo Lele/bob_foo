@@ -127,7 +127,7 @@ namespace bob_foo.DrawableContents3D
 #endif
             Mouse.SetPosition(200, 200);
 
-            WorldMatrix = Matrix.CreateFromAxisAngle(Vector3.Right, 0) * Matrix.CreateFromAxisAngle(Vector3.Up, 0);
+            WorldMatrix = Matrix.CreateFromAxisAngle(Vector3.Right, Pitch) * Matrix.CreateFromAxisAngle(Vector3.Up, Yaw);
 
 
             float distance = Speed * dt;

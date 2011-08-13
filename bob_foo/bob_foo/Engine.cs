@@ -48,7 +48,7 @@ namespace bob_foo
             this.Components.Add(menu);
             this.Components.Add(saveScore);
             this.Components.Add(level);
-            status = 1;
+            status = 0;
         }
 
         /// <summary>
