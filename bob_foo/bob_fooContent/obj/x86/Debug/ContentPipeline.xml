@@ -2,24 +2,284 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>models\bob01.x</Source>
-      <Name>models\bob01</Name>
-      <Importer>XImporter</Importer>
+      <Source>Resources\background.jpg</Source>
+      <Name>Resources\background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\background.xnb</Output>
+      <Time>2011-08-12T17:43:55.899+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\bluetoothInstruction.jpg</Source>
+      <Name>Resources\bluetoothInstruction</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\bluetoothInstruction.xnb</Output>
+      <Time>2011-08-12T17:43:55.899+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\bang.png</Source>
+      <Name>Resources\Elements\bang</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bang.xnb</Output>
+      <Time>2011-08-12T17:43:55.899+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\bersaglio.png</Source>
+      <Name>Resources\Elements\bersaglio</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bersaglio.xnb</Output>
+      <Time>2011-08-12T17:43:55.899+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\bullet ground hole.png</Source>
+      <Name>Resources\Elements\bullet ground hole</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet ground hole.xnb</Output>
+      <Time>2011-08-12T17:43:55.899+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\bullet hole.png</Source>
+      <Name>Resources\Elements\bullet hole</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet hole.xnb</Output>
+      <Time>2011-08-12T17:43:55.9146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\bullet wood hole.png</Source>
+      <Name>Resources\Elements\bullet wood hole</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet wood hole.xnb</Output>
+      <Time>2011-08-12T17:43:55.9146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\bullet.png</Source>
+      <Name>Resources\Elements\bullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet.xnb</Output>
+      <Time>2011-08-12T17:43:55.9146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\menu.png</Source>
+      <Name>Resources\Elements\menu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menu.xnb</Output>
+      <Time>2011-08-12T17:43:55.9146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\menuInstructions.png</Source>
+      <Name>Resources\Elements\menuInstructions</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menuInstructions.xnb</Output>
+      <Time>2011-08-12T17:43:55.9302+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\menuScores.png</Source>
+      <Name>Resources\Elements\menuScores</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menuScores.xnb</Output>
+      <Time>2011-08-12T17:43:55.9458+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Elements\mirino.png</Source>
+      <Name>Resources\Elements\mirino</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\mirino.xnb</Output>
+      <Time>2011-08-12T17:43:55.9458+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Resources\Sound\bang.wav</Source>
+      <Name>Resources\Sound\bang</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Sound\bang.xnb</Output>
+      <Time>2011-08-12T17:43:55.9458+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\marble.FBX</Source>
+      <Name>models\marble</Name>
+      <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob01.xnb</Output>
-      <Time>2011-04-13T22:52:17.5809848+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\marble.xnb</Output>
+      <Time>2011-08-12T19:38:40.6852+02:00</Time>
       <Dependency>
-        <Key>obj\x86\Debug\models\bob01_0.xml</Key>
-        <Value>2011-04-13T22:52:53.6060453+02:00</Value>
+        <Key>obj\x86\Debug\models\marble_0.xml</Key>
+        <Value>2011-08-12T19:40:24.143+02:00</Value>
       </Dependency>
     </Item>
     <Item>
-      <Source>models\bob01.x</Source>
-      <Importer>XImporter</Importer>
+      <Source>models\pista03.fbx</Source>
+      <Name>models\pista03</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista03.xnb</Output>
+      <Time>2011-08-12T19:38:31.4228+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\pista03_0.xml</Key>
+        <Value>2011-08-12T19:40:22.817+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>bigfont.spritefont</Source>
+      <Name>bigfont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\bigfont.xnb</Output>
+      <Time>2011-08-12T17:53:02.0978+02:00</Time>
+    </Item>
+    <Item>
+      <Source>countDownFont.spritefont</Source>
+      <Name>countDownFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\countDownFont.xnb</Output>
+      <Time>2011-08-12T17:53:02.0978+02:00</Time>
+    </Item>
+    <Item>
+      <Source>font.spritefont</Source>
+      <Name>font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2011-08-12T17:53:02.0822+02:00</Time>
+    </Item>
+    <Item>
+      <Source>menuFont.spritefont</Source>
+      <Name>menuFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\menuFont.xnb</Output>
+      <Time>2011-08-12T17:53:02.0822+02:00</Time>
+    </Item>
+    <Item>
+      <Source>shotFont.spritefont</Source>
+      <Name>shotFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\shotFont.xnb</Output>
+      <Time>2011-08-12T17:53:02.0822+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\marble.FBX</Source>
+      <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>obj\x86\Debug\models\bob01_0.xml</Output>
-      <Time>2011-04-13T22:52:17.5809848+02:00</Time>
+      <Output>obj\x86\Debug\models\marble_0.xml</Output>
+      <Time>2011-08-12T19:38:40.6852+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Marble.jpg</Source>
+      <Name>Textures\Marble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Textures\Marble.xnb</Output>
+      <Time>2011-08-12T18:54:20.6014+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\wedge_p1_diff_v1.tga</Source>
+      <Name>Textures\wedge_p1_diff_v1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb</Output>
+      <Time>2011-08-12T18:54:20.6482+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\pista03.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\pista03_0.xml</Output>
+      <Time>2011-08-12T19:38:31.4228+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\bob02.fbx</Source>
+      <Name>models\bob02</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob02.xnb</Output>
+      <Time>2011-08-12T19:38:31.3758+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\bob02_0.xml</Key>
+        <Value>2011-08-12T19:40:22.3646+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\cube.fbx</Source>
+      <Name>models\cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\cube.xnb</Output>
+      <Time>2011-08-12T19:38:31.3978+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\cube_0.xml</Key>
+        <Value>2011-08-12T19:40:22.5518+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\playground.fbx</Source>
+      <Name>models\playground</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\playground.xnb</Output>
+      <Time>2011-08-12T19:38:31.4838+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\playground_0.xml</Key>
+        <Value>2011-08-12T19:40:23.987+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\bob02.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\bob02_0.xml</Output>
+      <Time>2011-08-12T19:38:31.3758+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\cube.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\cube_0.xml</Output>
+      <Time>2011-08-12T19:38:31.3978+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\playground.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\playground_0.xml</Output>
+      <Time>2011-08-12T19:38:31.4838+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -27,10 +287,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -59,7 +319,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-04-06T11:09:37.7173355+02:00</Value>
+        <Value>2011-04-11T15:38:59.9488+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

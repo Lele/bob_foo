@@ -42,9 +42,139 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\bob01.x">
-      <Name>bob01</Name>
-      <Importer>XImporter</Importer>
+    <Compile Include="Resources\background.jpg">
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\bluetoothInstruction.jpg">
+      <Name>bluetoothInstruction</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\bang.png">
+      <Name>bang</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\bersaglio.png">
+      <Name>bersaglio</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\bullet ground hole.png">
+      <Name>bullet ground hole</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\bullet hole.png">
+      <Name>bullet hole</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\bullet wood hole.png">
+      <Name>bullet wood hole</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\bullet.png">
+      <Name>bullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\menu.png">
+      <Name>menu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\menuInstructions.png">
+      <Name>menuInstructions</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\menuScores.png">
+      <Name>menuScores</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Elements\mirino.png">
+      <Name>mirino</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Resources\Sound\bang.wav">
+      <Name>bang</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bigfont.spritefont">
+      <Name>bigfont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="countDownFont.spritefont">
+      <Name>countDownFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="font.spritefont">
+      <Name>font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="menuFont.spritefont">
+      <Name>menuFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="shotFont.spritefont">
+      <Name>shotFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Marble.jpg">
+      <Name>Marble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\wedge_p1_diff_v1.tga">
+      <Name>wedge_p1_diff_v1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="models\bob02.fbx">
+      <Name>bob02</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="models\cube.fbx">
+      <Name>cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="models\pista03.fbx">
+      <Name>pista03</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="models\playground.fbx">
+      <Name>playground</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="models\marble.FBX">
+      <Name>marble</Name>
+      <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
