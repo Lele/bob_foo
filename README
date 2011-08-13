@@ -41,8 +41,12 @@ bob_foo = project directory (contiene bob_foo (classi) e bob_fooContent(texture,
 bob_foo.sln = file Microsoft Visual Studio Solution
 bob_foo.suo = file Visual Studio Solution User Options
 
+#######################################
+STARTING POINT(prima commit seria) :-)
+#######################################
+Le classi già implementate servono alla gestione dei menu e dei modelli grafici. La classe ancora grezza è PlayScreen che ora contiene solo il codice di esempio della libreria fisica.
 
 #######################################
 
 
-debo
+debo e lele
