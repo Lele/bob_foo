@@ -33,6 +33,8 @@ namespace bob_foo.DrawableContents3D
         public EntityModel(Entity entity, Model model, Matrix transform, Game game, PlayScreen ps)
             : base(game)
         {
+            this.Enabled = false;
+            this.Visible = false;
             this.entity = entity;
             this.model = model;
             this.Transform = transform;

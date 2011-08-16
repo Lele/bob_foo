@@ -117,6 +117,7 @@
     <Compile Include="Components\PlayScreen.cs" />
     <Compile Include="Components\SaveScore.cs" />
     <Compile Include="Components\ScoreData.cs" />
+    <Compile Include="Components\timeSprite.cs" />
     <Compile Include="DrawableContents3D\Camera.cs" />
     <Compile Include="DrawableContents3D\EntityModel.cs" />
     <Compile Include="DrawableContents3D\StaticModel.cs" />

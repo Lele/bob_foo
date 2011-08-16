@@ -24,16 +24,15 @@ namespace bob_foo
     public class Engine : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
         private Wiimote balanceBoard;
         private Texture2D background;
-        private PlayScreen level;
+        public PlayScreen level;
         private SaveScore saveScore;
         private Menu menu;
         private int status;
         public Vector2 sensibility;
         private int lastScore;
-        private EntityModel test;
 
         public Engine()
         {
@@ -163,7 +162,6 @@ namespace bob_foo
                     {
                         level.Enabled = true;
                         level.Visible = true;
-
                     } break;
                 case 2:
                     {

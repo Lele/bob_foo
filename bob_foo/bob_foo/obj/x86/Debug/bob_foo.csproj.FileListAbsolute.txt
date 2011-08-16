@@ -26,7 +26,6 @@ C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\mirino.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Sound\bang.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\marble.xnb
-C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista03.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\bigfont.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\countDownFont.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\font.xnb
@@ -39,3 +38,4 @@ C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob02.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\cube.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\playground.xnb
+C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista03.xnb

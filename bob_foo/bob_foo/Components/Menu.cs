@@ -82,6 +82,7 @@ namespace bob_foo.Components
                             {
                                 case 0:
                                     game.SetStatus(1);
+                                    game.level.nextLevel();
                                     this.Visible = false;
                                     this.Enabled = false;
                                     break;
@@ -196,6 +197,8 @@ namespace bob_foo.Components
 
 
             spriteBatch.End();
+            GraphicsDevice.BlendState = BlendState.Opaque;
+            GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             base.Draw(gameTime);
         }
         private void MoveSelection(GameTime gameTime)

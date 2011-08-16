@@ -26,6 +26,8 @@ namespace bob_foo.DrawableContents3D
         public StaticModel(Model model, Matrix transform, Game game,PlayScreen ps)
             : base(game)
         {
+            this.Enabled = false;
+            this.Visible = false;
             this.model = model;
             this.Transform = transform;
             this.ps = ps;

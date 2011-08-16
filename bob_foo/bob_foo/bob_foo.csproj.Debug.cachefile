@@ -12,7 +12,6 @@ Content\Resources\Elements\menuScores.xnb
 Content\Resources\Elements\mirino.xnb
 Content\Resources\Sound\bang.xnb
 Content\models\marble.xnb
-Content\models\pista03.xnb
 Content\bigfont.xnb
 Content\countDownFont.xnb
 Content\font.xnb
@@ -23,3 +22,4 @@ Content\Textures\wedge_p1_diff_v1.xnb
 Content\models\bob02.xnb
 Content\models\cube.xnb
 Content\models\playground.xnb
+Content\models\pista03.xnb
