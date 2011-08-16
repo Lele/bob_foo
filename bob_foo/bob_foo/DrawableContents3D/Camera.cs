@@ -74,90 +74,27 @@ namespace bob_foo.DrawableContents3D
         /// <param name="game">Game that this camera belongs to.</param>
         /// <param name="position">Initial position of the camera.</param>
         /// <param name="speed">Initial movement speed of the camera.</param>
-        public Camera(PlayScreen ps, Vector3 position, float speed)
+        public Camera(PlayScreen ps, Vector3 position,Vector3 target, float speed)
         {
             Ps = ps;
-            Position = position;
+            Position = position; 
             Speed = speed;
             ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, 4f / 3f, .1f, 10000.0f);
             Mouse.SetPosition(200, 200);
+            WorldMatrix = Matrix.CreateWorld(Vector3.Zero, target - Position, Vector3.Up);
+            ViewMatrix = Matrix.CreateLookAt(Position, target, Vector3.Up);
         }
 
-        /// <summary>
-        /// Moves the camera forward using its speed.
-        /// </summary>
-        /// <param name="dt">Timestep duration.</param>
-        public void MoveForward(float dt)
+          public void Move(Vector3 bobPos)
         {
-            Position += WorldMatrix.Forward * (dt * Speed);
-        }
-        /// <summary>
-        /// Moves the camera right using its speed.
-        /// </summary>
-        /// <param name="dt">Timestep duration.</param>
-        /// 
-        public void MoveRight(float dt)
-        {
-            Position += WorldMatrix.Right * (dt * Speed);
-        }
-        /// <summary>
-        /// Moves the camera up using its speed.
-        /// </summary>
-        /// <param name="dt">Timestep duration.</param>
-        /// 
-        public void MoveUp(float dt)
-        {
-            Position += new Vector3(0, (dt * Speed), 0);
+            Position += Speed*(bobPos-Position-new Vector3(0,-0.5f,-1));
+            WorldMatrix = Matrix.CreateWorld(Vector3.Zero, bobPos - Position, Vector3.Up);
+            ViewMatrix = Matrix.CreateLookAt(Position, bobPos, Vector3.Up);
         }
 
-        /// <summary>
-        /// Updates the camera's view matrix.
-        /// </summary>
-        /// <param name="dt">Timestep duration.</param>
         public void Update(float dt)
         {
-#if XBOX360
-            //Turn based on gamepad input.
-            Yaw += Game.GamePadState.ThumbSticks.Right.X * -1.5f * dt;
-            Pitch += Game.GamePadState.ThumbSticks.Right.Y * 1.5f * dt;
-#else
-            //Turn based on mouse input.
-            Yaw += (200 - Ps.MouseState.X) * dt * .12f;
-            Pitch += (200 - Ps.MouseState.Y) * dt * .12f;
-#endif
-            Mouse.SetPosition(200, 200);
-
-            WorldMatrix = Matrix.CreateFromAxisAngle(Vector3.Right, Pitch) * Matrix.CreateFromAxisAngle(Vector3.Up, Yaw);
-
-
-            float distance = Speed * dt;
-#if XBOX360
-            //Move based on gamepad input.
-                MoveForward(Game.GamePadState.ThumbSticks.Left.Y * distance);
-                MoveRight(Game.GamePadState.ThumbSticks.Left.X * distance);
-                if (Game.GamePadState.IsButtonDown(Buttons.LeftStick))
-                    MoveUp(distance);
-                if (Game.GamePadState.IsButtonDown(Buttons.RightStick))
-                    MoveUp(-distance);
-#else
-
-            //Scoot the camera around depending on what keys are pressed.
-            if (Ps.KeyboardState.IsKeyDown(Keys.E))
-                MoveForward(distance);
-            if (Ps.KeyboardState.IsKeyDown(Keys.D))
-                MoveForward(-distance);
-            if (Ps.KeyboardState.IsKeyDown(Keys.S))
-                MoveRight(-distance);
-            if (Ps.KeyboardState.IsKeyDown(Keys.F))
-                MoveRight(distance);
-            if (Ps.KeyboardState.IsKeyDown(Keys.A))
-                MoveUp(distance);
-            if (Ps.KeyboardState.IsKeyDown(Keys.Z))
-                MoveUp(-distance);
-#endif
-
-            WorldMatrix = WorldMatrix * Matrix.CreateTranslation(Position);
-            ViewMatrix = Matrix.Invert(WorldMatrix);
+            Move(Ps.bobBox.Position);
         }
     }
 }

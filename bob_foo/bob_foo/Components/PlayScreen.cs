@@ -38,7 +38,7 @@ namespace bob_foo.Components
         public Model[] stage;
         public Model Marble;
 
-        private Box bobBox = null;
+        public Box bobBox = null;
 
         public KeyboardState KeyboardState;
         public MouseState MouseState;
@@ -76,7 +76,7 @@ namespace bob_foo.Components
 
             pause = false;
 
-            Camera = new Camera(this, new Vector3(0, 3, 10), 5);
+            Camera = new Camera(this, new Vector3(0, 0, 1),Vector3.Zero, 0.05f);
 
             prevStatePauseKey = false;
 
@@ -128,10 +128,10 @@ namespace bob_foo.Components
             bgMod.Visible = true;
 
             //Bob
-            bobBox = new Box(Camera.Position, 0.20f, 0.12f, 0.5f, 40);
+            bobBox = new Box(Vector3.Zero, 0.20f, 0.12f, 0.5f, 40);
             bobBox.WorldTransform = Camera.WorldMatrix;
             Matrix scaling = Matrix.CreateScale(0.04f, 0.04f, 0.04f);
-            //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
+            scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
             EntityModel model = new EntityModel(bobBox, Marble, scaling, Game, this);
             Game.Components.Add(model);
             bobBox.Tag = model;
@@ -139,6 +139,7 @@ namespace bob_foo.Components
             model.Visible = true;
             model.Enabled = true;
 
+            Camera.Position = new Vector3(30, 100, -100);
         }
         
 
@@ -167,8 +168,8 @@ namespace bob_foo.Components
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == Microsoft.Xna.Framework.Input.ButtonState.Pressed
                 || KeyboardState.IsKeyDown(Keys.Escape))
                 Game.Exit();
-
             Camera.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+           
             if (!pause && !start)
             {
                 space.Update();
@@ -211,9 +212,5 @@ namespace bob_foo.Components
             base.Draw(gameTime);
         }
 
-        public void makeVisible()
-        {
-            
-        }
     }
 }
