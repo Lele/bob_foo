@@ -87,7 +87,7 @@ namespace bob_foo.DrawableContents3D
 
           public void Move(Vector3 bobPos)
         {
-            Position += Speed*(bobPos-Position-new Vector3(0,-0.5f,-1));
+            Position += Speed*(bobPos-Position-new Vector3(0,-0.5f,0.2f));
             WorldMatrix = Matrix.CreateWorld(Vector3.Zero, bobPos - Position, Vector3.Up);
             ViewMatrix = Matrix.CreateLookAt(Position, bobPos, Vector3.Up);
         }

@@ -39,3 +39,4 @@ C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\cube.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\playground.xnb
 C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista03.xnb
+C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista07.xnb

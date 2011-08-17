@@ -76,7 +76,7 @@ namespace bob_foo.Components
 
             pause = false;
 
-            Camera = new Camera(this, new Vector3(0, 0, 1),Vector3.Zero, 0.05f);
+            Camera = new Camera(this, new Vector3(0, 0, -1),Vector3.Zero, 0.05f);
 
             prevStatePauseKey = false;
 
@@ -93,7 +93,7 @@ namespace bob_foo.Components
             Marble = Game.Content.Load<Model>("models/bob02");
 
             for (int i = 0; i < stage.Length;i++ )
-                stage[i] = Game.Content.Load<Model>("models/pista03");
+                stage[i] = Game.Content.Load<Model>("models/pista07");
          
             space = new Space();
             space.ForceUpdater.Gravity = new Vector3(0, -9.81f,0);
@@ -139,7 +139,7 @@ namespace bob_foo.Components
             model.Visible = true;
             model.Enabled = true;
 
-            Camera.Position = new Vector3(30, 100, -100);
+            Camera.Position = new Vector3(30, 200, 200);
         }
         
 
@@ -175,6 +175,18 @@ namespace bob_foo.Components
                 space.Update();
                 if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
                     pause = true;
+                Vector3 fw = bobBox.OrientationMatrix.Forward;
+                bobBox.LinearVelocity += (1.16f*fw - bobBox.LinearVelocity / 60) / 7;
+                if (KeyboardState.IsKeyDown(Keys.Left))
+                {
+                    Vector3 left = bobBox.OrientationMatrix.Left;
+                    bobBox.LinearVelocity += (1.16f * left - bobBox.LinearVelocity / 60) / 7;
+                }
+                if (KeyboardState.IsKeyDown(Keys.Right))
+                {
+                    Vector3 right = bobBox.OrientationMatrix.Right;
+                    bobBox.LinearVelocity += (1.16f * right - bobBox.LinearVelocity / 60) / 7;
+                }
             }
 
             else if (start)

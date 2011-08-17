@@ -281,6 +281,26 @@
       <Output>obj\x86\Debug\models\pista03_0.xml</Output>
       <Time>2011-08-12T19:38:31.4228+02:00</Time>
     </Item>
+    <Item>
+      <Source>models\pista07.fbx</Source>
+      <Name>models\pista07</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista07.xnb</Output>
+      <Time>2011-08-17T16:07:09.7958+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\pista07_0.xml</Key>
+        <Value>2011-08-17T16:07:48.4718+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\pista07.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\pista07_0.xml</Output>
+      <Time>2011-08-17T16:07:09.7958+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
