@@ -120,7 +120,7 @@ namespace bob_foo.Components
 
             //background
             TriangleMesh.GetVerticesAndIndicesFromModel(BackGroundMod, out vertices, out indices);
-            var bgMesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(0, -30, 0)));
+            var bgMesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(0, -60, 0)));
             space.Add(bgMesh);
             bgMod = new StaticModel(BackGroundMod, bgMesh.WorldTransform.Matrix, Game, this);
             Game.Components.Add(bgMod);
@@ -139,7 +139,7 @@ namespace bob_foo.Components
             model.Visible = true;
             model.Enabled = true;
 
-            Camera.Position = new Vector3(30, 200, 200);
+            Camera.Position = new Vector3(200, 200, 200);
         }
         
 
@@ -180,12 +180,12 @@ namespace bob_foo.Components
                 if (KeyboardState.IsKeyDown(Keys.Left))
                 {
                     Vector3 left = bobBox.OrientationMatrix.Left;
-                    bobBox.LinearVelocity += (1.16f * left - bobBox.LinearVelocity / 60) / 7;
+                    bobBox.LinearVelocity += (left - bobBox.LinearVelocity / 60) / 7;
                 }
                 if (KeyboardState.IsKeyDown(Keys.Right))
                 {
                     Vector3 right = bobBox.OrientationMatrix.Right;
-                    bobBox.LinearVelocity += (1.16f * right - bobBox.LinearVelocity / 60) / 7;
+                    bobBox.LinearVelocity += (right - bobBox.LinearVelocity / 60) / 7;
                 }
             }
 

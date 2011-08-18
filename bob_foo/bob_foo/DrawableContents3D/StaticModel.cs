@@ -60,5 +60,31 @@ namespace bob_foo.DrawableContents3D
             }
             base.Draw(gameTime);
         }
+
+        public Vector3 getBonePosition(string boneName, Vector3 origin)
+        {
+            //matrice di trasformazione che dall'origine mi porta al centro del modello
+            //partiamo dalla trasformazione della bone che stiamo cercando, quindi le altre matrici andranno moltiplicate a destra
+            Matrix fromOriginToBoneTransform = model.Bones[boneName].Transform;
+
+            //ora devo trovare le matrici di trasformazione che mi permettono di passare dal centro del modello
+            //alla bone voluta
+
+            ModelBone bone = model.Bones[boneName];
+
+            //costruisco la matrice, moltiplicando a destra la matrice del genitore
+            //nota che all'ultimo passo la matrice di destra sarà equivalente alla matrice di trasformazione
+            //che dal centro mi porta al centro del modello
+            while(bone.Parent!=null)
+            {
+                fromOriginToBoneTransform = fromOriginToBoneTransform * bone.Parent.Transform;
+            }
+
+            //prendo il punto è lo moltiplico per la matrice di trasformazione complessiva
+            Vector3 bonePosition = Vector3.Transform(origin,fromOriginToBoneTransform);
+            
+            return bonePosition;
+
+        }
     }
 }
