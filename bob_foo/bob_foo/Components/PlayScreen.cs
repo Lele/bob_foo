@@ -76,7 +76,7 @@ namespace bob_foo.Components
 
             pause = false;
 
-            Camera = new Camera(this, new Vector3(0, 0, -1),Vector3.Zero, 0.05f);
+            Camera = new Camera(this, new Vector3(0, 0, -1),Vector3.Zero, 0.07f);
 
             prevStatePauseKey = false;
 
@@ -113,7 +113,7 @@ namespace bob_foo.Components
             TriangleMesh.GetVerticesAndIndicesFromModel(stage[currLevel], out vertices, out indices);
             stageMesh = new StaticMesh(vertices, indices, new AffineTransform(Matrix3X3.CreateScale(2f),Vector3.Zero));
             space.Add(stageMesh);
-            stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this,true);
+            stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this);
             Game.Components.Add(stageMod);
             stageMod.Visible = true;
             stageMod.Enabled = true;
@@ -122,7 +122,7 @@ namespace bob_foo.Components
             TriangleMesh.GetVerticesAndIndicesFromModel(BackGroundMod, out vertices, out indices);
             var bgMesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(0, -60, 0)));
             space.Add(bgMesh);
-            bgMod = new StaticModel(BackGroundMod, bgMesh.WorldTransform.Matrix, Game, this,false);
+            bgMod = new StaticModel(BackGroundMod, bgMesh.WorldTransform.Matrix, Game, this);
             Game.Components.Add(bgMod);
             bgMod.Enabled = true;
             bgMod.Visible = true;

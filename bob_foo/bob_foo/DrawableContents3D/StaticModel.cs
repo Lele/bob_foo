@@ -17,14 +17,13 @@ namespace bob_foo.DrawableContents3D
         public Matrix Transform;
         Matrix[] boneTransforms;
         PlayScreen ps;
-        private Boolean texture;
         /// <summary>
         /// Creates a new StaticModel.
         /// </summary>
         /// <param name="model">Graphical representation to use for the entity.</param>
         /// <param name="transform">Base transformation to apply to the model before moving to the entity.</param>
         /// <param name="game">Game to which this component will belong.</param>
-        public StaticModel(Model model, Matrix transform, Game game,PlayScreen ps, Boolean texture)
+        public StaticModel(Model model, Matrix transform, Game game,PlayScreen ps)
             : base(game)
         {
             this.Enabled = false;
@@ -32,7 +31,6 @@ namespace bob_foo.DrawableContents3D
             this.model = model;
             this.Transform = transform;
             this.ps = ps;
-            this.texture = texture;
 
             //Collect any bone transformations in the model itself.
             //The default cube model doesn't have any, but this allows the StaticModel to work with more complicated shapes.

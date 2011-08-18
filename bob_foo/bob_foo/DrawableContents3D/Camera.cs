@@ -89,9 +89,9 @@ namespace bob_foo.DrawableContents3D
         {
 
             if (Ps.bobBox.WorldTransform.Up.Y>=0)
-                Position += Speed * (bobPos - Position + 0.5f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Up);
+                Position += Speed * (bobPos - Position + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Up);
             else
-                Position += Speed * (bobPos - Position + 0.5f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Down);
+                Position += Speed * (bobPos - Position + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Down);
             WorldMatrix = Matrix.CreateWorld(Vector3.Zero, bobPos - Position, Vector3.Up);
             ViewMatrix = Matrix.CreateLookAt(Position, bobPos, Vector3.Up);
         }
