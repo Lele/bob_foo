@@ -76,7 +76,7 @@ namespace bob_foo.Components
 
             pause = false;
 
-            Camera = new Camera(this, new Vector3(0, 0, -1),Vector3.Zero, 0.07f);
+            Camera = new Camera(this, new Vector3(0, 0, -1),Vector3.Zero, 0.09f);
 
             prevStatePauseKey = false;
 
@@ -140,7 +140,7 @@ namespace bob_foo.Components
             model.Visible = true;
             model.Enabled = true;
 
-            Camera.Position = new Vector3(200, 200, 200);
+            Camera.Position = new Vector3(500, 500, 500);
         }
         
 
@@ -170,7 +170,9 @@ namespace bob_foo.Components
                 || KeyboardState.IsKeyDown(Keys.Escape))
                 Game.Exit();
             Camera.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
-           
+            Vector3 dw = bobBox.OrientationMatrix.Down;
+            bobBox.LinearVelocity += (0.01f * dw - bobBox.LinearVelocity / 60) / 7;
+
             if (!pause && !start)
             {
                 space.Update();
@@ -179,12 +181,12 @@ namespace bob_foo.Components
                 if (KeyboardState.IsKeyDown(Keys.Up))
                 {
                     Vector3 fw = bobBox.OrientationMatrix.Forward;
-                    bobBox.LinearVelocity += (1.16f * fw - bobBox.LinearVelocity / 60) / 7;
+                    bobBox.LinearVelocity += (1.18f * fw - bobBox.LinearVelocity / 60) / 7;
                 }
                 if (KeyboardState.IsKeyDown(Keys.Down))
                 {
                     Vector3 fw = bobBox.OrientationMatrix.Forward;
-                    bobBox.LinearVelocity -= (1.16f * fw - bobBox.LinearVelocity / 60) / 7;
+                    bobBox.LinearVelocity -= (1.18f * fw - bobBox.LinearVelocity / 60) / 7;
                 }
                 if (KeyboardState.IsKeyDown(Keys.Left))
                 {
