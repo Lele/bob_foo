@@ -90,7 +90,7 @@ namespace bob_foo.Components
 
             BackGroundMod = Game.Content.Load<Model>("models/playground");
 
-            Marble = Game.Content.Load<Model>("models/bob02");
+            Marble = Game.Content.Load<Model>("models/bob09");
 
             for (int i = 0; i < stage.Length;i++ )
                 stage[i] = Game.Content.Load<Model>("models/pista07");
@@ -128,10 +128,10 @@ namespace bob_foo.Components
             bgMod.Visible = true;
 
             //Bob
-            bobBox = new Box(Vector3.Zero, 0.20f, 0.12f, 0.5f, 40);
+            bobBox = new Box(new Vector3(0,0.5f,0), 0.20f, 0.12f, 0.5f, 40);
             bobBox.WorldTransform = Camera.WorldMatrix;
-            Matrix scaling = Matrix.CreateScale(0.04f, 0.04f, 0.04f);
-            scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
+            Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
+            //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
             EntityModel model = new EntityModel(bobBox, Marble, scaling, Game, this);
             Game.Components.Add(model);
             bobBox.Tag = model;

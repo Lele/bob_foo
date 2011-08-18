@@ -24,3 +24,4 @@ Content\models\cube.xnb
 Content\models\playground.xnb
 Content\models\pista03.xnb
 Content\models\pista07.xnb
+Content\models\bob09.xnb
