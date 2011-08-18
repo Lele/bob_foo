@@ -111,7 +111,7 @@ namespace bob_foo.Components
 
             //pista
             TriangleMesh.GetVerticesAndIndicesFromModel(stage[currLevel], out vertices, out indices);
-            stageMesh = new StaticMesh(vertices, indices, new AffineTransform(Vector3.Zero));
+            stageMesh = new StaticMesh(vertices, indices, new AffineTransform(Matrix3X3.CreateScale(2f),Vector3.Zero));
             space.Add(stageMesh);
             stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this);
             Game.Components.Add(stageMod);
@@ -128,8 +128,9 @@ namespace bob_foo.Components
             bgMod.Visible = true;
 
             //Bob
-            bobBox = new Box(new Vector3(0,0.5f,0), 0.20f, 0.12f, 0.5f, 40);
+            bobBox = new Box(Vector3.Zero, 0.30f, 0.12f, 0.5f, 40);
             bobBox.WorldTransform = Camera.WorldMatrix;
+            bobBox.Position = new Vector3(0, 0.1f, 0);
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
             //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
             EntityModel model = new EntityModel(bobBox, Marble, scaling, Game, this);
@@ -175,17 +176,25 @@ namespace bob_foo.Components
                 space.Update();
                 if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
                     pause = true;
-                Vector3 fw = bobBox.OrientationMatrix.Forward;
-                bobBox.LinearVelocity += (1.16f*fw - bobBox.LinearVelocity / 60) / 7;
+                if (KeyboardState.IsKeyDown(Keys.Up))
+                {
+                    Vector3 fw = bobBox.OrientationMatrix.Forward;
+                    bobBox.LinearVelocity += (1.16f * fw - bobBox.LinearVelocity / 60) / 7;
+                }
+                if (KeyboardState.IsKeyDown(Keys.Down))
+                {
+                    Vector3 fw = bobBox.OrientationMatrix.Forward;
+                    bobBox.LinearVelocity -= (1.16f * fw - bobBox.LinearVelocity / 60) / 7;
+                }
                 if (KeyboardState.IsKeyDown(Keys.Left))
                 {
                     Vector3 left = bobBox.OrientationMatrix.Left;
-                    bobBox.LinearVelocity += (left - bobBox.LinearVelocity / 60) / 7;
+                    bobBox.LinearVelocity += (0.7f*left - bobBox.LinearVelocity / 60) / 7;
                 }
                 if (KeyboardState.IsKeyDown(Keys.Right))
                 {
                     Vector3 right = bobBox.OrientationMatrix.Right;
-                    bobBox.LinearVelocity += (right - bobBox.LinearVelocity / 60) / 7;
+                    bobBox.LinearVelocity += (0.7f*right - bobBox.LinearVelocity / 60) / 7;
                 }
             }
 
