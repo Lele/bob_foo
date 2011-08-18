@@ -73,22 +73,25 @@ namespace bob_foo.DrawableContents3D
         /// </summary>
         /// <param name="game">Game that this camera belongs to.</param>
         /// <param name="position">Initial position of the camera.</param>
+        /// <param name="target">Position of the target</param>
         /// <param name="speed">Initial movement speed of the camera.</param>
         public Camera(PlayScreen ps, Vector3 position,Vector3 target, float speed)
         {
             Ps = ps;
             Position = position; 
             Speed = speed;
+            //frustum
             ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, 4f / 3f, .1f, 10000.0f);
-            Mouse.SetPosition(200, 200);
             WorldMatrix = Matrix.CreateWorld(Vector3.Zero, target - Position, Vector3.Up);
             ViewMatrix = Matrix.CreateLookAt(Position, target, Vector3.Up);
         }
 
           public void Move(Vector3 bobPos)
         {
-
+            //l'if serve per avere sempre la visione dall'alto anche quando il bob si ribalta
             if (Ps.bobBox.WorldTransform.Up.Y>=0)
+                //muovo la telecamera gradualmente nella posizione definita da bobPos + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Up
+                //più aumenta la distanza più aumenta l'accellerazione
                 Position += Speed * (bobPos - Position + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Up);
             else
                 Position += Speed * (bobPos - Position + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Down);

@@ -28,43 +28,58 @@ namespace bob_foo.Components
     
     public class PlayScreen : Microsoft.Xna.Framework.DrawableGameComponent
     {
+        //graphics manager ereditato da Engine..inutile sapere cos e' :-D
         GraphicsDeviceManager graphics;
-
+        //Spazio fisico
         Space space;
-
+        //telecamera del gioco
         public Camera Camera;
-
+        //modelli 3d
         public Model BackGroundMod;
         public Model[] stage;
-        public Model Marble;
-
+        public Model bobMod;
+        //modello fisico del bob
         public Box bobBox = null;
 
+        //stato della tastiera e del mouse
         public KeyboardState KeyboardState;
         public MouseState MouseState;
         
+        //numero del livello
         private int currLevel;
 
+        //modelli 3d del livello e del background
         private StaticModel stageMod;
         private StaticModel bgMod;
 
+        //modelli fisici del livello e del background
         private StaticMesh stageMesh;
         private StaticMesh bgMesh;
-
+        
+        //variabili di stato del gioco
         private Boolean pause;
         private Boolean prevStatePauseKey;
         private Boolean start;
 
+        //variabile che si occupa del timer
         private timeSprite countDown;
 
+        //font per il timeSprite
         SpriteFont timeFont;
 
-        public PlayScreen(Game game)
+        //oggetto balance board
+        Wiimote bb;
+
+        public PlayScreen(Game game, Wiimote bb)
             :base(game)
         {
+            //disabilitiamo il componente per le altre fasi di gioco. saranno settate a true alla pressione di New Game
             this.Enabled = false;
             this.Visible = false;
+            //inizializzo il vettore di modelli per i livelli
             stage = new Model[1];
+
+            this.bb = bb;
         }
 
     
@@ -86,15 +101,18 @@ namespace bob_foo.Components
        
         protected override void LoadContent()
         {
+            //carico tutto il materiale per il gioco
             timeFont = Game.Content.Load<SpriteFont>("menuFont");
 
             BackGroundMod = Game.Content.Load<Model>("models/playground");
 
-            Marble = Game.Content.Load<Model>("models/bob09");
+            bobMod = Game.Content.Load<Model>("models/bob09");
 
+            //for da mettere  posto in caso di più livelli
             for (int i = 0; i < stage.Length;i++ )
                 stage[i] = Game.Content.Load<Model>("models/pista07");
          
+            //inizializzo lo spazio fisico
             space = new Space();
             space.ForceUpdater.Gravity = new Vector3(0, -9.81f,0);
             space.ForceUpdater.AllowMultithreading = true;
@@ -104,19 +122,26 @@ namespace bob_foo.Components
 
         }
 
+        //metodo che inizializza il livello
         public void nextLevel()
         {
             Vector3[] vertices;
             int[] indices;
 
             //pista
+            //Ricevo i vertici e gli indici del modello 3d
             TriangleMesh.GetVerticesAndIndicesFromModel(stage[currLevel], out vertices, out indices);
+            //creo il modello fisico
             stageMesh = new StaticMesh(vertices, indices, new AffineTransform(Matrix3X3.CreateScale(2f),Vector3.Zero));
+            //lo aggiungo allo spazio fisico
             space.Add(stageMesh);
+            //creo il modello 3d collegato al modello fisico
             stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this);
             Game.Components.Add(stageMod);
             stageMod.Visible = true;
             stageMod.Enabled = true;
+
+            //stessa cosa per il bg e per il bob
 
             //background
             TriangleMesh.GetVerticesAndIndicesFromModel(BackGroundMod, out vertices, out indices);
@@ -133,17 +158,18 @@ namespace bob_foo.Components
             bobBox.Position = new Vector3(0, 0.1f, 0);
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
             //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
-            EntityModel model = new EntityModel(bobBox, Marble, scaling, Game, this);
+            EntityModel model = new EntityModel(bobBox, bobMod, scaling, Game, this);
             Game.Components.Add(model);
             bobBox.Tag = model;
             space.Add(bobBox);
             model.Visible = true;
             model.Enabled = true;
 
+            //sposto la telecamera per avere effetto introduzione
             Camera.Position = new Vector3(500, 500, 500);
         }
         
-
+        //metodo non utilizzato per la gestione di un evento collisione
         void HandleCollision(EntityCollidable sender, Collidable other, CollidablePairHandler pair)
         {
             var otherEntityInformation = other as EntityCollidable;
@@ -165,19 +191,25 @@ namespace bob_foo.Components
 
             KeyboardState = Keyboard.GetState();
             MouseState = Mouse.GetState();
-
+            //codice per uscire dal gioco
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == Microsoft.Xna.Framework.Input.ButtonState.Pressed
                 || KeyboardState.IsKeyDown(Keys.Escape))
                 Game.Exit();
+            //aggiorno la telecamera
             Camera.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            //ricavo la direzione top-down del bob e applico un'accellerazione in questa direzione per tenerlo il piu' possibile incollato alla  pista
             Vector3 dw = bobBox.OrientationMatrix.Down;
             bobBox.LinearVelocity += (0.01f * dw - bobBox.LinearVelocity / 60) / 7;
 
             if (!pause && !start)
             {
+                //aggiorno la fisica del gioco
                 space.Update();
+               
                 if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
                     pause = true;
+
+                //la stessa di prima la faccio se non sono in pausa e se non c'è il countdown alla pressione delle frecce
                 if (KeyboardState.IsKeyDown(Keys.Up))
                 {
                     Vector3 fw = bobBox.OrientationMatrix.Forward;
@@ -199,7 +231,7 @@ namespace bob_foo.Components
                     bobBox.LinearVelocity += (0.7f*right - bobBox.LinearVelocity / 60) / 7;
                 }
             }
-
+            //codice per la gestione del countdown
             else if (start)
             {
                 if (countDown == null)

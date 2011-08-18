@@ -41,7 +41,7 @@ namespace bob_foo
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferredBackBufferWidth = 1000;
             Content.RootDirectory = "Content";
-            level = new PlayScreen(this);
+            level = new PlayScreen(this,balanceBoard);
             menu = new Menu(this, balanceBoard);
             saveScore = new SaveScore(this);
             this.Components.Add(menu);
