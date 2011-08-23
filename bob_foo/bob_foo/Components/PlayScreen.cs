@@ -28,6 +28,7 @@ namespace bob_foo.Components
     
     public class PlayScreen : Microsoft.Xna.Framework.DrawableGameComponent
     {
+        #region Variables
         //graphics manager ereditato da Engine..inutile sapere cos e' :-D
         GraphicsDeviceManager graphics;
         //Spazio fisico
@@ -69,6 +70,16 @@ namespace bob_foo.Components
 
         //oggetto balance board
         Wiimote bb;
+        //balance board sensibility
+        float sensibility = 0.4f;
+
+        //booleano da settare a 1 se si vuole usare la balance board
+        Boolean usingBalanceBoard = true;
+
+        //sound variables
+        SoundEffect song;
+        SoundEffectInstance songInstance;
+        #endregion
 
         public PlayScreen(Game game, Wiimote bb)
             :base(game)
@@ -107,6 +118,10 @@ namespace bob_foo.Components
             BackGroundMod = Game.Content.Load<Model>("models/playground");
 
             bobMod = Game.Content.Load<Model>("models/bob09");
+
+            //load background music
+            song = Game.Content.Load<SoundEffect>("audio/SummerSong");
+            songInstance = song.CreateInstance();
 
             //for da mettere  posto in caso di più livelli
             for (int i = 0; i < stage.Length;i++ )
@@ -153,7 +168,7 @@ namespace bob_foo.Components
             bgMod.Visible = true;
 
             //Bob
-            bobBox = new Box(Vector3.Zero, 0.30f, 0.12f, 0.5f, 40);
+            bobBox = new Box(Vector3.Zero, 0.30f, 0.12f, 0.5f, 15);
             bobBox.WorldTransform = Camera.WorldMatrix;
             bobBox.Position = new Vector3(0, 0.1f, 0);
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
@@ -203,37 +218,98 @@ namespace bob_foo.Components
 
             if (!pause && !start)
             {
-                //aggiorno la fisica del gioco
-                space.Update();
-               
+                //gestione pausa
                 if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
                     pause = true;
 
-                //la stessa di prima la faccio se non sono in pausa e se non c'è il countdown alla pressione delle frecce
-                if (KeyboardState.IsKeyDown(Keys.Up))
+                //aggiorno la fisica del gioco
+                space.Update();
+
+                if (usingBalanceBoard) //update with balance board
                 {
-                    Vector3 fw = bobBox.OrientationMatrix.Forward;
-                    bobBox.LinearVelocity += (1.18f * fw - bobBox.LinearVelocity / 60) / 7;
+                    BalanceBoardSensorsF balance = bb.WiimoteState.BalanceBoardState.SensorValuesKg;
+                    float horizontaldelta = (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
+                    float verticaldelta = (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
+                    float total = (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
+                    if (total > 30) //per evitare spostamenti non voluti, visto che il corpo non sarà mai perfettamente fermo
+                    {
+                        //la percentuale di peso che si può spostare è limitata alla metà del peso corporeo
+                        float forwardThreshold = 0.5f;
+                        float lateralThreshold = 0.5f;
+                        float forwardMovement = (verticaldelta / total)/sensibility;
+                        float lateralMovement = (0.2f*horizontaldelta / total)/sensibility; //0.2 è per limitare il movimento laterale
+
+                        //gestione dei trashold per evitare che ci siano movimenti esagerati
+                        if (verticaldelta / total > forwardThreshold)
+                            forwardMovement = forwardThreshold / sensibility;
+                        if (verticaldelta / total < -forwardThreshold)
+                            forwardMovement = -forwardThreshold / sensibility;
+                        if (horizontaldelta / total > lateralThreshold)
+                            lateralMovement = 0.5f*lateralThreshold / sensibility;
+                        if (horizontaldelta / total < -lateralThreshold)
+                            lateralMovement = -0.5f*lateralThreshold / sensibility;
+                        
+                        //effettuo lo spostamento del bob, proporzionale ai valori della bb
+                        if ( forwardMovement>= 0.2)
+                        {
+                            Vector3 fw = bobBox.OrientationMatrix.Forward;
+                            bobBox.LinearVelocity += (forwardMovement * fw + - bobBox.LinearVelocity / 60) / 7;
+                        }
+
+                        if (forwardMovement < -0.2)
+                        {
+                            Vector3 fw = bobBox.OrientationMatrix.Forward;
+                            bobBox.LinearVelocity -= (-forwardMovement * fw - bobBox.LinearVelocity / 60) / 7;
+                        }
+
+                        if (lateralMovement < -0.2)
+                        {
+                            Vector3 left = bobBox.OrientationMatrix.Left;
+                            bobBox.LinearVelocity += (-lateralMovement * left - bobBox.LinearVelocity / 60) / 7;
+                        }
+
+                        if (lateralMovement > 0.2)
+                        {
+                            Vector3 right = bobBox.OrientationMatrix.Right;
+                            bobBox.LinearVelocity += (lateralMovement * right - bobBox.LinearVelocity / 60) / 7;
+                        }
+
+                    }
+
                 }
-                if (KeyboardState.IsKeyDown(Keys.Down))
-                {
-                    Vector3 fw = bobBox.OrientationMatrix.Forward;
-                    bobBox.LinearVelocity -= (1.18f * fw - bobBox.LinearVelocity / 60) / 7;
-                }
-                if (KeyboardState.IsKeyDown(Keys.Left))
-                {
-                    Vector3 left = bobBox.OrientationMatrix.Left;
-                    bobBox.LinearVelocity += (0.7f*left - bobBox.LinearVelocity / 60) / 7;
-                }
-                if (KeyboardState.IsKeyDown(Keys.Right))
-                {
-                    Vector3 right = bobBox.OrientationMatrix.Right;
-                    bobBox.LinearVelocity += (0.7f*right - bobBox.LinearVelocity / 60) / 7;
+                else //update with keyboard
+                {   
+                    //la stessa di prima la faccio se non sono in pausa e se non c'è il countdown alla pressione delle frecce
+                    if (KeyboardState.IsKeyDown(Keys.Up))
+                    {
+                        Vector3 fw = bobBox.OrientationMatrix.Forward;
+                        bobBox.LinearVelocity += (1.50f * fw - bobBox.LinearVelocity / 60) / 7;
+                    }
+                    if (KeyboardState.IsKeyDown(Keys.Down))
+                    {
+                        Vector3 fw = bobBox.OrientationMatrix.Forward;
+                        bobBox.LinearVelocity -= (1.18f * fw - bobBox.LinearVelocity / 60) / 7;
+                    }
+                    if (KeyboardState.IsKeyDown(Keys.Left))
+                    {
+                        Vector3 left = bobBox.OrientationMatrix.Left;
+                        bobBox.LinearVelocity += (0.7f * left - bobBox.LinearVelocity / 60) / 7;
+                    }
+                    if (KeyboardState.IsKeyDown(Keys.Right))
+                    {
+                        Vector3 right = bobBox.OrientationMatrix.Right;
+                        bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
+                    }
                 }
             }
             //codice per la gestione del countdown
             else if (start)
             {
+                //faccio partire il brano di sottofondo
+                //songInstance.Volume = 0.75f;
+                //songInstance.IsLooped = false;
+                //songInstance.Play();
+
                 if (countDown == null)
                 {
                     countDown = new timeSprite(Game, 10000f, new Vector2(465, 220), timeFont, Color.AliceBlue);
@@ -241,6 +317,7 @@ namespace bob_foo.Components
                 }
                 else if (countDown.timeOver)
                 {
+                    songInstance.Play();
                     countDown.Dispose();
                     start = false;
                     //computeStartingSpeed() <-- da fare
