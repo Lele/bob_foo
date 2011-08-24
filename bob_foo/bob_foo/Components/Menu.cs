@@ -70,7 +70,7 @@ namespace bob_foo.Components
                         if ((balanceBoard.WiimoteState.ButtonState.A && !prevButtonStatus) || (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                         {
                             section = 0;
-                            balanceBoard.Connect();
+                            //balanceBoard.Connect();
                         }
                     } break;
                 case 0:

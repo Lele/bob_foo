@@ -330,6 +330,64 @@
       <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\SummerSong.xnb</Output>
       <Time>2011-08-22T16:46:34.5155109+02:00</Time>
     </Item>
+    <Item>
+      <Source>models\bobconbobmen.fbx</Source>
+      <Name>models\bobconbobmen</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bobconbobmen.xnb</Output>
+      <Time>2011-08-24T09:41:57.712557+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\bobconbobmen_0.xml</Key>
+        <Value>2011-08-24T09:49:46.6076706+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\bobconbobmen.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\bobconbobmen_0.xml</Output>
+      <Time>2011-08-24T09:41:57.712557+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\pista2.fbx</Source>
+      <Name>models\pista2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista2.xnb</Output>
+      <Time>2011-08-24T09:41:57.7155572+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\pista2_0.xml</Key>
+        <Value>2011-08-24T09:55:25.8310731+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\pista2.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\pista2_0.xml</Output>
+      <Time>2011-08-24T09:41:57.7155572+02:00</Time>
+    </Item>
+    <Item>
+      <Source>audio\engine_2.wav</Source>
+      <Name>audio\engine_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\engine_2.xnb</Output>
+      <Time>2011-08-24T10:03:05.6923756+02:00</Time>
+    </Item>
+    <Item>
+      <Source>audio\hyperspace_activate.wav</Source>
+      <Name>audio\hyperspace_activate</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\hyperspace_activate.xnb</Output>
+      <Time>2011-08-24T10:03:05.7003761+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

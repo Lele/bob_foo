@@ -74,11 +74,20 @@ namespace bob_foo.Components
         float sensibility = 0.4f;
 
         //booleano da settare a 1 se si vuole usare la balance board
-        Boolean usingBalanceBoard = true;
+        Boolean usingBalanceBoard = false;
 
         //sound variables
         SoundEffect song;
         SoundEffectInstance songInstance;
+        SoundEffect engine;
+        SoundEffectInstance engineInstance;
+        SoundEffect hyperspace;
+        SoundEffectInstance hyperspaceInsance;
+        float enginePitch = 0.0f;
+        float engineVolume = 0.0f;
+        float actualForwardVelocity = 0.0f;
+        float previousForwardVelocity = 0.0f;
+        Boolean hyperspaceAlreadyPlayed = false;
         #endregion
 
         public PlayScreen(Game game, Wiimote bb)
@@ -117,16 +126,28 @@ namespace bob_foo.Components
 
             BackGroundMod = Game.Content.Load<Model>("models/playground");
 
+            //old bob
             bobMod = Game.Content.Load<Model>("models/bob09");
+            //bob con pupazzetti
+            //bobMod = Game.Content.Load<Model>("models/bobconbobmen");
 
             //load background music
             song = Game.Content.Load<SoundEffect>("audio/SummerSong");
             songInstance = song.CreateInstance();
 
+            //load sound effects
+            engine = Game.Content.Load<SoundEffect>("audio/engine_2");
+            engineInstance = engine.CreateInstance();
+            hyperspace = Game.Content.Load<SoundEffect>("audio/hyperspace_activate");
+            hyperspaceInsance = hyperspace.CreateInstance();
+            
+
             //for da mettere  posto in caso di più livelli
-            for (int i = 0; i < stage.Length;i++ )
+            for (int i = 0; i < stage.Length; i++)
+            {
                 stage[i] = Game.Content.Load<Model>("models/pista07");
-         
+                //stage[i] = Game.Content.Load<Model>("models/pista2");
+            }
             //inizializzo lo spazio fisico
             space = new Space();
             space.ForceUpdater.Gravity = new Vector3(0, -9.81f,0);
@@ -301,6 +322,58 @@ namespace bob_foo.Components
                         bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
                     }
                 }
+
+                //engineInstance.Play();
+                if (engineInstance.State != SoundState.Playing)
+                {
+                    engineInstance.IsLooped = true;
+                    engineInstance.Play();
+                }
+
+                //update delle caratteristiche sonore
+                actualForwardVelocity = Vector3.Dot(bobBox.LinearVelocity, bobBox.OrientationMatrix.Forward);
+                
+                //enginePitch += Vector3.Dot(bobBox.LinearVelocity, bobBox.OrientationMatrix.Forward) / 1000;
+                enginePitch += (actualForwardVelocity - previousForwardVelocity)/10;
+                engineVolume += (actualForwardVelocity - previousForwardVelocity)/10;
+
+                previousForwardVelocity = actualForwardVelocity;
+                
+                //engineVolume = Vector3.Dot(bobBox.LinearVelocity, bobBox.OrientationMatrix.Forward) / 30;
+                //engine pitch must be bounded from -1.0f to 1.0f and volume from 0.0f to 1.0f;
+                if (engineInstance.State == SoundState.Playing)
+                {
+                    
+                    if (enginePitch >= 1.0f)
+                    {
+                        enginePitch = 1.0f;
+                        if (hyperspaceAlreadyPlayed == false)
+                        {
+                            hyperspaceInsance.Play();
+                            hyperspaceAlreadyPlayed = true;
+                        }
+                    }
+                    else
+                    {
+                        hyperspaceAlreadyPlayed = false;
+                        if (enginePitch <= -1.0f)
+                            enginePitch = -1.0f;
+                    }
+                    if (engineVolume >= 1.0f)
+                    {
+                        engineVolume = 1.0f;
+                    }
+                    else
+                    {
+                        if (engineVolume <= 0.0f)
+                            engineVolume = 0.0f;
+                    }
+                    
+                    engineInstance.Pitch = enginePitch;
+                    engineInstance.Volume = engineVolume;
+                }
+                //modify engine pitch, from -1.0f to 1.0f
+
             }
             //codice per la gestione del countdown
             else if (start)
@@ -312,11 +385,12 @@ namespace bob_foo.Components
 
                 if (countDown == null)
                 {
-                    countDown = new timeSprite(Game, 10000f, new Vector2(465, 220), timeFont, Color.AliceBlue);
+                    countDown = new timeSprite(Game, 3000f, new Vector2(465, 220), timeFont, Color.AliceBlue);
                     Game.Components.Add(countDown);
                 }
                 else if (countDown.timeOver)
                 {
+                    songInstance.Volume = 0.2f;
                     songInstance.Play();
                     countDown.Dispose();
                     start = false;
