@@ -91,7 +91,7 @@ namespace bob_foo.DrawableContents3D
             //l'if serve per avere sempre la visione dall'alto anche quando il bob si ribalta
             if (Ps.bobBox.WorldTransform.Up.Y>=0)
                 //muovo la telecamera gradualmente nella posizione definita da bobPos + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Up
-                //più aumenta la distanza più aumenta l'accellerazione
+                //più aumenta la distanza più aumenta l'accelerazione
                 Position += Speed * (bobPos - Position + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Up);
             else
                 Position += Speed * (bobPos - Position + 1f * Ps.bobBox.WorldTransform.Backward + 0.5f * Ps.bobBox.WorldTransform.Down);

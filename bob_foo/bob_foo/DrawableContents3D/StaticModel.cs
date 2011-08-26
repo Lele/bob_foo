@@ -64,7 +64,7 @@ namespace bob_foo.DrawableContents3D
         {
             //matrice di trasformazione che dall'origine mi porta al centro del modello
             //partiamo dalla trasformazione della bone che stiamo cercando, quindi le altre matrici andranno moltiplicate a destra
-            Matrix fromOriginToBoneTransform = model.Bones[boneName].Transform;
+            Matrix fromOriginToBoneTransform = Matrix.Identity;
 
             //ora devo trovare le matrici di trasformazione che mi permettono di passare dal centro del modello
             //alla bone voluta
@@ -74,9 +74,10 @@ namespace bob_foo.DrawableContents3D
             //costruisco la matrice, moltiplicando a destra la matrice del genitore
             //nota che all'ultimo passo la matrice di destra sarà equivalente alla matrice di trasformazione
             //che dal centro mi porta al centro del modello
-            while(bone.Parent!=null)
+            while(bone!=null)
             {
-                fromOriginToBoneTransform = fromOriginToBoneTransform * bone.Parent.Transform;
+                fromOriginToBoneTransform = fromOriginToBoneTransform * bone.Transform;
+                bone = bone.Parent;
             }
 
             //prendo il punto è lo moltiplico per la matrice di trasformazione complessiva

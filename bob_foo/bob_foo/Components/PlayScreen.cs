@@ -22,6 +22,7 @@ using BEPUphysics.MathExtensions;
 using BEPUphysics.Entities;
 using BEPUphysics.Collidables.MobileCollidables;
 using BEPUphysics.NarrowPhaseSystems.Pairs;
+using System.Threading;
 
 namespace bob_foo.Components
 {
@@ -41,6 +42,8 @@ namespace bob_foo.Components
         public Model bobMod;
         //modello fisico del bob
         public Box bobBox = null;
+        //box posizionata alla fine della pista per decretare la fine del livello
+        public Box finalBox = null;
 
         //stato della tastiera e del mouse
         public KeyboardState KeyboardState;
@@ -88,6 +91,14 @@ namespace bob_foo.Components
         float actualForwardVelocity = 0.0f;
         float previousForwardVelocity = 0.0f;
         Boolean hyperspaceAlreadyPlayed = false;
+
+        //variabili per calcolare il piano alla fine della pista
+        Vector3 firstPlanePoint;
+        Vector3 secondPlanePoint;
+        Vector3 thirdPlanePoint;
+        Plane finishPlane;
+        Vector3[] bobVertices;
+        int[] bobIndices;
         #endregion
 
         public PlayScreen(Game game, Wiimote bb)
@@ -113,6 +124,8 @@ namespace bob_foo.Components
 
             Camera = new Camera(this, new Vector3(0, 0, -1),Vector3.Zero, 0.09f);
 
+            //Camera = new Camera(this, new Vector3(bobBox.Position.X, bobBox.Position.Y, bobBox.Position.Z-1),bobBox.Position, 0.09f);
+
             prevStatePauseKey = false;
 
             base.Initialize();
@@ -128,8 +141,13 @@ namespace bob_foo.Components
 
             //old bob
             bobMod = Game.Content.Load<Model>("models/bob09");
+            //bobMod.Root.Transform = Matrix.CreateFromYawPitchRoll(0, MathHelper.PiOver2, 0) * bobMod.Root.Transform;
+            
             //bob con pupazzetti
-            //bobMod = Game.Content.Load<Model>("models/bobconbobmen");
+            //bobMod = Game.Content.Load<Model>("models/bobbista4");
+
+            //calcolo vertici che mi serviranno per la bounding box
+            TriangleMesh.GetVerticesAndIndicesFromModel(bobMod, out bobVertices, out bobIndices);
 
             //load background music
             song = Game.Content.Load<SoundEffect>("audio/SummerSong");
@@ -145,8 +163,10 @@ namespace bob_foo.Components
             //for da mettere  posto in caso di più livelli
             for (int i = 0; i < stage.Length; i++)
             {
-                stage[i] = Game.Content.Load<Model>("models/pista07");
-                //stage[i] = Game.Content.Load<Model>("models/pista2");
+                //stage[i] = Game.Content.Load<Model>("models/pista07");
+                stage[i] = Game.Content.Load<Model>("models/pista09.1");
+                //la nuova pista va girata di 90 gradi per allinearla con il bob
+                stage[i].Root.Transform = Matrix.CreateFromYawPitchRoll(-MathHelper.PiOver2, 0, 0) * stage[i].Root.Transform;
             }
             //inizializzo lo spazio fisico
             space = new Space();
@@ -168,11 +188,20 @@ namespace bob_foo.Components
             //Ricevo i vertici e gli indici del modello 3d
             TriangleMesh.GetVerticesAndIndicesFromModel(stage[currLevel], out vertices, out indices);
             //creo il modello fisico
-            stageMesh = new StaticMesh(vertices, indices, new AffineTransform(Matrix3X3.CreateScale(2f),Vector3.Zero));
+            //per la vecchia pista
+            //stageMesh = new StaticMesh(vertices, indices, new AffineTransform(Matrix3X3.CreateScale(6f), Vector3.Zero));
+            //per la nuova pista
+            stageMesh = new StaticMesh(vertices, indices, new AffineTransform(Matrix3X3.CreateScale(6f),Vector3.Zero));
             //lo aggiungo allo spazio fisico
             space.Add(stageMesh);
             //creo il modello 3d collegato al modello fisico
             stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this);
+            //calcolo i punti per la costruzione del piano che determina la fine del livello
+            firstPlanePoint = stageMod.getBonePosition("Bone_0", Vector3.Zero);
+            secondPlanePoint = stageMod.getBonePosition("Bone_2", Vector3.Zero);
+            thirdPlanePoint = stageMod.getBonePosition("Bone_3", Vector3.Zero);
+            finishPlane = new Plane(firstPlanePoint, secondPlanePoint, thirdPlanePoint);
+            
             Game.Components.Add(stageMod);
             stageMod.Visible = true;
             stageMod.Enabled = true;
@@ -191,15 +220,24 @@ namespace bob_foo.Components
             //Bob
             bobBox = new Box(Vector3.Zero, 0.30f, 0.12f, 0.5f, 15);
             bobBox.WorldTransform = Camera.WorldMatrix;
-            bobBox.Position = new Vector3(0, 0.1f, 0);
+            //per la vecchia pista
+            //bobBox.Position = new Vector3(0, 0.1f, 0);
+            //per la nuova pista
+            bobBox.Position = new Vector3(0, 0.2f, 0);
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
             //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
+            //Matrix rotation = Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2,0,0);
             EntityModel model = new EntityModel(bobBox, bobMod, scaling, Game, this);
             Game.Components.Add(model);
             bobBox.Tag = model;
             space.Add(bobBox);
             model.Visible = true;
             model.Enabled = true;
+
+            //creo una scatola e la posiziono in fondo alla pista
+            finalBox = new Box(Vector3.Zero, 0.15f, 0.15f, 0.15f);
+            finalBox.Position = firstPlanePoint;
+            space.Add(finalBox);
 
             //sposto la telecamera per avere effetto introduzione
             Camera.Position = new Vector3(500, 500, 500);
@@ -224,6 +262,12 @@ namespace bob_foo.Components
      
         public override void Update(GameTime gameTime)
         {
+            //Thread trd = new Thread(new ThreadStart(this.boundingBoxTasks));
+            //trd.IsBackground = true;
+            //trd.Start();
+            //boundingBoxTasks();
+            
+            
 
             KeyboardState = Keyboard.GetState();
             MouseState = Mouse.GetState();
@@ -416,6 +460,33 @@ namespace bob_foo.Components
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+        private void boundingBoxTasks()
+        {
+            //controllo se sono arrivato alla fine
+            //quindi calcolo la boundingbox
+            //BoundingSphere bobBoundingSphere = BoundingSphere.CreateFromPoints(bobVertices);
+            //ricalcolo la bounding box trasformando i vertici nella posizione attuale
+            Matrix trasformazioneBob = bobMod.Root.Transform;
+            /*int i;
+            for (i=0; i < bobVertices.Length; i++)
+            {
+                bobVertices[i] = Vector3.Transform(bobVertices[i], trasformazioneBob);
+            }*/
+            //Vector3[] newBobVertices;
+            Vector3.Transform(bobVertices, ref trasformazioneBob, bobVertices);
+
+
+            BoundingBox bobBoundingBox = BoundingBox.CreateFromPoints(bobVertices);
+
+            //la testo contro il piano
+            PlaneIntersectionType intersectionType = finishPlane.Intersects(bobBoundingBox);
+            if (intersectionType.GetType().Equals(PlaneIntersectionType.Intersecting))
+            {
+                Console.WriteLine("Sei arrivato alla fine");
+            }
+
         }
 
     }
