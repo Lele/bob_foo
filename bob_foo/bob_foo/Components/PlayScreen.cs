@@ -279,7 +279,7 @@ namespace bob_foo.Components
             Camera.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             //ricavo la direzione top-down del bob e applico un'accellerazione in questa direzione per tenerlo il piu' possibile incollato alla  pista
             Vector3 dw = bobBox.OrientationMatrix.Down;
-            bobBox.LinearVelocity += (0.01f * dw - bobBox.LinearVelocity / 60) / 7;
+            bobBox.LinearVelocity += (0.1f * dw - bobBox.LinearVelocity / 60) / 7;
 
             if (!pause && !start)
             {
@@ -358,12 +358,20 @@ namespace bob_foo.Components
                     if (KeyboardState.IsKeyDown(Keys.Left))
                     {
                         Vector3 left = bobBox.OrientationMatrix.Left;
-                        bobBox.LinearVelocity += (0.7f * left - bobBox.LinearVelocity / 60) / 7;
+                        //old behaviour
+                        //bobBox.LinearVelocity += (0.7f * left - bobBox.LinearVelocity / 60) / 7;
+                        //new mod
+                        bobBox.LinearVelocity += (0.2f * left - bobBox.LinearVelocity / 60) / 7;
+                        bobBox.AngularVelocity += (0.1f * Vector3.One - bobBox.AngularVelocity / 60) / 7;
                     }
                     if (KeyboardState.IsKeyDown(Keys.Right))
                     {
                         Vector3 right = bobBox.OrientationMatrix.Right;
-                        bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
+                        //old behaviour
+                        //bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
+                        //new mod
+                        bobBox.LinearVelocity += (0.2f * right - bobBox.LinearVelocity / 60) / 7;
+                        bobBox.AngularVelocity -= (0.1f * Vector3.One - bobBox.LinearVelocity / 60) / 7;
                     }
                 }
 
