@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>polymsh</Name>
     <Identity>
-      <SourceFilename>C:\Users\Simone\bob_foo\bob_foo\bob_fooContent\models\playground.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\models\playground.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -26,7 +26,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Scene_Root</Name>
       <Identity>
-        <SourceFilename>C:\Users\Simone\bob_foo\bob_foo\bob_fooContent\models\playground.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\models\playground.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

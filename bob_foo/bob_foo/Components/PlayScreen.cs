@@ -141,11 +141,11 @@ namespace bob_foo.Components
             BackGroundMod = Game.Content.Load<Model>("models/playground");
 
             //old bob
-            //bobMod = Game.Content.Load<Model>("models/bob09");
+            bobMod = Game.Content.Load<Model>("models/bob09");
             //bobMod.Root.Transform = Matrix.CreateFromYawPitchRoll(0, MathHelper.PiOver2, 0) * bobMod.Root.Transform;
             
             //bob con pupazzetti
-            bobMod = Game.Content.Load<Model>("models/bobbista4");
+            //bobMod = Game.Content.Load<Model>("models/bobbista4");
 
             //calcolo vertici che mi serviranno per la bounding box
             TriangleMesh.GetVerticesAndIndicesFromModel(bobMod, out bobVertices, out bobIndices);
@@ -226,7 +226,7 @@ namespace bob_foo.Components
             //per la vecchia pista
             //bobBox.Position = new Vector3(0, 0.1f, 0);
             //per la nuova pista
-            bobBox.Position = new Vector3(0, 0.2f, 0);
+            bobBox.Position = new Vector3(0, 0.25f, 0);
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
             //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
             //Matrix rotation = Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2,0,0);
@@ -238,10 +238,10 @@ namespace bob_foo.Components
             model.Enabled = true;
 
             //creo una scatola e la posiziono in fondo alla pista
-            finalBox = new Box(Vector3.Zero, 0.15f, 0.15f, 0.15f);
+            finalBox = new Box(Vector3.Zero, 0.5f, 0.5f, 0.5f);
             finalBox.Position = thirdPlanePoint;
             finalBox.CollisionInformation.Events.InitialCollisionDetected += HandleStageEnd;
-            EntityModel finalBoxModel = new EntityModel(finalBox, finalBoxMod, finalBox.WorldTransform, Game, this);
+            EntityModel finalBoxModel = new EntityModel(finalBox, finalBoxMod, Matrix.CreateScale(0.5f,0.5f,0.5f), Game, this);
             Game.Components.Add(finalBoxModel);
             finalBoxModel.Visible = true;
             finalBoxModel.Enabled = true;
@@ -254,11 +254,7 @@ namespace bob_foo.Components
 
         void HandleStageEnd(EntityCollidable sender, Collidable other, CollidablePairHandler pair)
         {
-            if (other.Equals(bobBox))
-            {
                 Console.WriteLine("sei arrivato alla fine!");
-            }
- 
         }
         
         //metodo non utilizzato per la gestione di un evento collisione
