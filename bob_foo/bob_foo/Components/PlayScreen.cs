@@ -40,6 +40,7 @@ namespace bob_foo.Components
         public Model BackGroundMod;
         public Model[] stage;
         public Model bobMod;
+        public Model finalBoxMod;
         //modello fisico del bob
         public Box bobBox = null;
         //box posizionata alla fine della pista per decretare la fine del livello
@@ -140,11 +141,11 @@ namespace bob_foo.Components
             BackGroundMod = Game.Content.Load<Model>("models/playground");
 
             //old bob
-            bobMod = Game.Content.Load<Model>("models/bob09");
+            //bobMod = Game.Content.Load<Model>("models/bob09");
             //bobMod.Root.Transform = Matrix.CreateFromYawPitchRoll(0, MathHelper.PiOver2, 0) * bobMod.Root.Transform;
             
             //bob con pupazzetti
-            //bobMod = Game.Content.Load<Model>("models/bobbista4");
+            bobMod = Game.Content.Load<Model>("models/bobbista4");
 
             //calcolo vertici che mi serviranno per la bounding box
             TriangleMesh.GetVerticesAndIndicesFromModel(bobMod, out bobVertices, out bobIndices);
@@ -158,6 +159,8 @@ namespace bob_foo.Components
             engineInstance = engine.CreateInstance();
             hyperspace = Game.Content.Load<SoundEffect>("audio/hyperspace_activate");
             hyperspaceInsance = hyperspace.CreateInstance();
+
+            finalBoxMod = Game.Content.Load<Model>("models/cube");
             
 
             //for da mettere  posto in caso di più livelli
@@ -236,11 +239,26 @@ namespace bob_foo.Components
 
             //creo una scatola e la posiziono in fondo alla pista
             finalBox = new Box(Vector3.Zero, 0.15f, 0.15f, 0.15f);
-            finalBox.Position = firstPlanePoint;
+            finalBox.Position = thirdPlanePoint;
+            finalBox.CollisionInformation.Events.InitialCollisionDetected += HandleStageEnd;
+            EntityModel finalBoxModel = new EntityModel(finalBox, finalBoxMod, finalBox.WorldTransform, Game, this);
+            Game.Components.Add(finalBoxModel);
+            finalBoxModel.Visible = true;
+            finalBoxModel.Enabled = true;
+            
             space.Add(finalBox);
 
             //sposto la telecamera per avere effetto introduzione
             Camera.Position = new Vector3(500, 500, 500);
+        }
+
+        void HandleStageEnd(EntityCollidable sender, Collidable other, CollidablePairHandler pair)
+        {
+            if (other.Equals(bobBox))
+            {
+                Console.WriteLine("sei arrivato alla fine!");
+            }
+ 
         }
         
         //metodo non utilizzato per la gestione di un evento collisione
@@ -262,10 +280,13 @@ namespace bob_foo.Components
      
         public override void Update(GameTime gameTime)
         {
+            //100% cpu utilization with a i7-2820m, and it still not perform well
             //Thread trd = new Thread(new ThreadStart(this.boundingBoxTasks));
             //trd.IsBackground = true;
             //trd.Start();
             //boundingBoxTasks();
+
+            //alternative solution: check if the bob collide with a fake/invisible box at the and of the track
             
             
 
