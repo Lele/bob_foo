@@ -233,13 +233,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\bobbista4.fbx">
-      <Name>bobbista4</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="models\Casco_blu.jpg">
       <Name>Casco_blu</Name>
       <Importer>TextureImporter</Importer>

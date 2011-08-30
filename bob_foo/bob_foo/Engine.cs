@@ -25,7 +25,8 @@ namespace bob_foo
     {
         private GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
-        private Wiimote balanceBoard;
+        private Wiimote balanceBoard;//old
+        private WiimoteCollection balanceBoards; //multiple balanceBoards!!!
         private Texture2D background;
         public PlayScreen level;
         private SaveScore saveScore;
@@ -41,8 +42,12 @@ namespace bob_foo
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferredBackBufferWidth = 1000;
             Content.RootDirectory = "Content";
-            level = new PlayScreen(this,balanceBoard);
-            menu = new Menu(this, balanceBoard);
+            //old
+            //level = new PlayScreen(this,balanceBoard);
+            level = new PlayScreen(this, balanceBoards);
+            //old
+            //menu = new Menu(this, balanceBoard);
+            menu = new Menu(this, balanceBoards);
             saveScore = new SaveScore(this);
             this.Components.Add(menu);
             this.Components.Add(saveScore);

@@ -18,7 +18,8 @@ namespace bob_foo.Components
     public class Menu : DrawableGameComponent
     {
         Engine game;
-        Wiimote balanceBoard;
+        //Wiimote balanceBoard; //sufficiente quando se ne usa una sola
+        WiimoteCollection balanceBoards; //collezione di balance boards
         Texture2D background;
         Texture2D backgroundScore;
         Texture2D backgroundInstructions;
@@ -38,17 +39,24 @@ namespace bob_foo.Components
         Boolean prevKeyStatus = true;
         ScoreData.HighScoreData scores;
 
+        //costruttore quando si usa una sola balanceboard
+        //public Menu(Engine game, Wiimote balanceBoard)
+        //    : base(game)
+        //{
+        //    this.Enabled = false;
+        //    this.Visible = false;
+        //    this.balanceBoard = balanceBoard;
+        //    this.game = game;
+        //}
 
-        public Menu(Engine game, Wiimote balanceBoard)
-            : base(game)
+        //costrutture da usare quando ci sono più balanceboards
+        public Menu(Engine game, WiimoteCollection balanceBoards):base(game)
         {
             this.Enabled = false;
             this.Visible = false;
-            this.balanceBoard = balanceBoard;
+            this.balanceBoards = balanceBoards;
             this.game = game;
         }
-
-
 
         public override void Initialize()
         {
@@ -67,16 +75,27 @@ namespace bob_foo.Components
             {
                 case -1:
                     {
-                        if ((balanceBoard.WiimoteState.ButtonState.A && !prevButtonStatus) || (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
+                        if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) ||*/ (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                         {
+                            //x Lele
+                            //quando si usano più balanceboards bisogna usare l'oggetto balanceBoards
+                            //ne prendi una e ci fai quello che prima facevi con l'oggetto balanceBoard
+                            
+                            //new code
+                            //deve essere "scommentato" per abilitare le balanceboards
                             section = 0;
+                            //balanceBoards.FindAllWiimotes();
+                            //for (int i=0; i < balanceBoards.Count; i++ )
+                            //    balanceBoards[i].Connect();
+                            
+                            //old code
                             //balanceBoard.Connect();
                         }
                     } break;
                 case 0:
                     {
                         MoveSelection(gameTime);
-                        if ((balanceBoard.WiimoteState.ButtonState.A && !prevButtonStatus) || (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
+                        if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) ||*/ (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                         {
                             switch (selection)
                             {
@@ -95,14 +114,14 @@ namespace bob_foo.Components
                     } break;
                 case 1:
                     {
-                        if ((balanceBoard.WiimoteState.ButtonState.A && !prevButtonStatus) || (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
+                        if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) ||*/ (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                             section = 0;
                     } break;
                 case 2:
                     {
                         MoveSensSelection(gameTime);
 
-                        if ((balanceBoard.WiimoteState.ButtonState.A && !prevButtonStatus) || (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
+                        if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) || */(Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                         {
                             sensSelection = 0;
                             section = 0;
@@ -110,11 +129,11 @@ namespace bob_foo.Components
                     } break;
                 case 3:
                     {
-                        if ((balanceBoard.WiimoteState.ButtonState.A && !prevButtonStatus) || (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
+                        if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) ||*/ (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                             section = 0;
                     } break;
             }
-            prevButtonStatus = balanceBoard.WiimoteState.ButtonState.A;
+            //prevButtonStatus = balanceBoards[0].WiimoteState.ButtonState.A;
             prevKeyStatus = Keyboard.GetState().IsKeyDown(Keys.Enter);
             base.Update(gameTime);
         }
@@ -155,9 +174,9 @@ namespace bob_foo.Components
                         for (int i = 0; i < option.Length; i++)
                         {
                             if (i != selection)
-                                spriteBatch.DrawString(font, option[i], new Vector2(400, 350 + (i * 60)), Color.Black);
+                                spriteBatch.DrawString(font, option[i], new Vector2(350, 350 + (i * 60)), Color.White);
                             else
-                                spriteBatch.DrawString(font, option[i], new Vector2(400, 350 + (i * 60)), Color.DarkRed);
+                                spriteBatch.DrawString(font, option[i], new Vector2(350, 350 + (i * 60)), Color.DarkRed);
                         }
                     } break;
                 case 1:

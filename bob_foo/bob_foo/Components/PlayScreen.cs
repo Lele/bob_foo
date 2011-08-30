@@ -74,11 +74,18 @@ namespace bob_foo.Components
 
         //oggetto balance board
         Wiimote bb;
+
+        //collezione di balanceBoards
+        WiimoteCollection balanceBoards;
+
         //balance board sensibility
         float sensibility = 0.4f;
 
         //booleano da settare a 1 se si vuole usare la balance board
         Boolean usingBalanceBoard = false;
+
+        //da settare a true se si usano più balanceboard
+        Boolean usingBalanceBoards = false;
 
         //sound variables
         SoundEffect song;
@@ -105,6 +112,8 @@ namespace bob_foo.Components
         public PlayScreen(Game game, Wiimote bb)
             :base(game)
         {
+            //se chiamo questo metodo vuol dire che uso la bb
+            usingBalanceBoard = true;
             //disabilitiamo il componente per le altre fasi di gioco. saranno settate a true alla pressione di New Game
             this.Enabled = false;
             this.Visible = false;
@@ -114,7 +123,17 @@ namespace bob_foo.Components
             this.bb = bb;
         }
 
-    
+        //overloading, metodo da usare con più balanceboards
+        public PlayScreen(Game game, WiimoteCollection balanceBoards)
+            : base(game)
+        {
+            usingBalanceBoards = true;
+            this.Enabled = false;
+            this.Visible = false;
+            stage = new Model[1];
+            this.balanceBoards = balanceBoards;
+        }
+
         public override void Initialize()
         {
             currLevel = 0;
@@ -145,7 +164,7 @@ namespace bob_foo.Components
             //bobMod.Root.Transform = Matrix.CreateFromYawPitchRoll(0, MathHelper.PiOver2, 0) * bobMod.Root.Transform;
             
             //bob con pupazzetti
-            //bobMod = Game.Content.Load<Model>("models/bobbista4");
+            //bobMod = Game.Content.Load<Model>("models/bobbista_scheletro_collo_SKIFO");
 
             //calcolo vertici che mi serviranno per la bounding box
             TriangleMesh.GetVerticesAndIndicesFromModel(bobMod, out bobVertices, out bobIndices);
@@ -168,6 +187,7 @@ namespace bob_foo.Components
             {
                 //stage[i] = Game.Content.Load<Model>("models/pista07");
                 stage[i] = Game.Content.Load<Model>("models/pista09.1");
+                //stage[i] = Game.Content.Load<Model>("models/pista09.2");
                 //la nuova pista va girata di 90 gradi per allinearla con il bob
                 stage[i].Root.Transform = Matrix.CreateFromYawPitchRoll(-MathHelper.PiOver2, 0, 0) * stage[i].Root.Transform;
             }
@@ -203,7 +223,10 @@ namespace bob_foo.Components
             firstPlanePoint = stageMod.getBonePosition("Bone_0", Vector3.Zero);
             secondPlanePoint = stageMod.getBonePosition("Bone_2", Vector3.Zero);
             thirdPlanePoint = stageMod.getBonePosition("Bone_3", Vector3.Zero);
-            finishPlane = new Plane(firstPlanePoint, secondPlanePoint, thirdPlanePoint);
+            //firstPlanePoint = stageMod.getBonePosition("BoneDown", Vector3.Zero);
+            //secondPlanePoint = stageMod.getBonePosition("BoneLeft", Vector3.Zero);
+            //thirdPlanePoint = stageMod.getBonePosition("BoneRight", Vector3.Zero);
+            //finishPlane = new Plane(firstPlanePoint, secondPlanePoint, thirdPlanePoint);
             
             Game.Components.Add(stageMod);
             stageMod.Visible = true;
@@ -227,6 +250,8 @@ namespace bob_foo.Components
             //bobBox.Position = new Vector3(0, 0.1f, 0);
             //per la nuova pista
             bobBox.Position = new Vector3(0, 0.25f, 0);
+            //per la pista09.2
+            //bobBox.Position = new Vector3(0, 4f, 0);
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
             //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
             //Matrix rotation = Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2,0,0);
@@ -307,12 +332,39 @@ namespace bob_foo.Components
                 //aggiorno la fisica del gioco
                 space.Update();
 
-                if (usingBalanceBoard) //update with balance board
+                if (balanceBoards != null && balanceBoards.Count >= 1) //update with balance board
                 {
-                    BalanceBoardSensorsF balance = bb.WiimoteState.BalanceBoardState.SensorValuesKg;
-                    float horizontaldelta = (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
-                    float verticaldelta = (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
-                    float total = (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
+
+                    float horizontaldelta = 0;
+                    float verticaldelta = 0;
+                    float total = 0;
+
+                    if (balanceBoards.Count == 1) //one bb
+                    {
+                        BalanceBoardSensorsF balance = bb.WiimoteState.BalanceBoardState.SensorValuesKg;
+                        horizontaldelta = (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
+                        verticaldelta = (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
+                        total = (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
+                    }
+
+                    if (balanceBoards.Count > 1) //more bb
+                    {
+                        for (int i = 0; i < balanceBoards.Count; i++)
+                        {
+                            BalanceBoardSensorsF balance = balanceBoards[i].WiimoteState.BalanceBoardState.SensorValuesKg;
+                            //sommo tutti i contributi di tutte le balanceboards
+                            horizontaldelta += (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
+                            verticaldelta += (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
+                            total += (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
+
+                        }
+                        //faccio la media
+                        horizontaldelta = horizontaldelta / balanceBoards.Count;
+                        verticaldelta = verticaldelta / balanceBoards.Count;
+                        total = total / balanceBoards.Count;
+                    }
+                    
+                    //logica di spostamento
                     if (total > 30) //per evitare spostamenti non voluti, visto che il corpo non sarà mai perfettamente fermo
                     {
                         //la percentuale di peso che si può spostare è limitata alla metà del peso corporeo
@@ -360,7 +412,7 @@ namespace bob_foo.Components
 
                 }
                 else //update with keyboard
-                {   
+                {
                     //la stessa di prima la faccio se non sono in pausa e se non c'è il countdown alla pressione delle frecce
                     if (KeyboardState.IsKeyDown(Keys.Up))
                     {
