@@ -244,7 +244,7 @@ namespace bob_foo.Components
             bgMod.Visible = true;
 
             //Bob
-            bobBox = new Box(Vector3.Zero, 0.30f, 0.12f, 0.5f, 15);
+            bobBox = new Box(Vector3.Zero, 0.20f, 0.13f, 0.5f, 15);
             bobBox.WorldTransform = Camera.WorldMatrix;
             //per la vecchia pista
             //bobBox.Position = new Vector3(0, 0.1f, 0);
@@ -267,11 +267,11 @@ namespace bob_foo.Components
             finalBox.Position = thirdPlanePoint;
             finalBox.CollisionInformation.Events.InitialCollisionDetected += HandleStageEnd;
             EntityModel finalBoxModel = new EntityModel(finalBox, finalBoxMod, Matrix.CreateScale(0.5f,0.5f,0.5f), Game, this);
-            Game.Components.Add(finalBoxModel);
+            //Game.Components.Add(finalBoxModel);
             finalBoxModel.Visible = true;
             finalBoxModel.Enabled = true;
             
-            space.Add(finalBox);
+            //space.Add(finalBox);
 
             //sposto la telecamera per avere effetto introduzione
             Camera.Position = new Vector3(500, 500, 500);
@@ -430,8 +430,8 @@ namespace bob_foo.Components
                         //old behaviour
                         //bobBox.LinearVelocity += (0.7f * left - bobBox.LinearVelocity / 60) / 7;
                         //new mod
-                        bobBox.LinearVelocity += (0.2f * left - bobBox.LinearVelocity / 60) / 7;
-                        bobBox.AngularVelocity += (0.1f * Vector3.One - bobBox.AngularVelocity / 60) / 7;
+                        bobBox.LinearVelocity += (0.7f * left - bobBox.LinearVelocity / 60) / 7;
+                        //bobBox.AngularVelocity += (0.1f * Vector3.One - bobBox.AngularVelocity / 60) / 7;
                     }
                     if (KeyboardState.IsKeyDown(Keys.Right))
                     {
@@ -439,8 +439,8 @@ namespace bob_foo.Components
                         //old behaviour
                         //bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
                         //new mod
-                        bobBox.LinearVelocity += (0.2f * right - bobBox.LinearVelocity / 60) / 7;
-                        bobBox.AngularVelocity -= (0.1f * Vector3.One - bobBox.LinearVelocity / 60) / 7;
+                        bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
+                        //bobBox.AngularVelocity -= (0.1f * Vector3.One - bobBox.LinearVelocity / 60) / 7;
                     }
                 }
 
