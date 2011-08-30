@@ -155,9 +155,9 @@ namespace bob_foo.Components
                         for (int i = 0; i < option.Length; i++)
                         {
                             if (i != selection)
-                                spriteBatch.DrawString(font, option[i], new Vector2(400, 350 + (i * 60)), Color.Black);
+                                spriteBatch.DrawString(font, option[i], new Vector2(350, 350 + (i * 60)), Color.White);
                             else
-                                spriteBatch.DrawString(font, option[i], new Vector2(400, 350 + (i * 60)), Color.DarkRed);
+                                spriteBatch.DrawString(font, option[i], new Vector2(350, 350 + (i * 60)), Color.DarkRed);
                         }
                     } break;
                 case 1:
