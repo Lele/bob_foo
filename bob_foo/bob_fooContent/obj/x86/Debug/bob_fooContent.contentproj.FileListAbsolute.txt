@@ -1,3 +1,0 @@
-C:\Users\Bo\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Simone\bob_foo\bob_foo\bob_fooContent\obj\x86\Debug\ResolveAssemblyReference.cache
