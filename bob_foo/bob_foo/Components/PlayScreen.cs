@@ -79,10 +79,6 @@ namespace bob_foo.Components
         WiimoteCollection balanceBoards;
 
         //balance board sensibility
-        float sensibility = 0.4f;
-
-        //booleano da settare a 1 se si vuole usare la balance board
-        Boolean usingBalanceBoard = false;
 
         //da settare a true se si usano più balanceboard
         Boolean usingBalanceBoards = false;
@@ -112,8 +108,7 @@ namespace bob_foo.Components
         public PlayScreen(Game game, Wiimote bb)
             :base(game)
         {
-            //se chiamo questo metodo vuol dire che uso la bb
-            usingBalanceBoard = true;
+
             //disabilitiamo il componente per le altre fasi di gioco. saranno settate a true alla pressione di New Game
             this.Enabled = false;
             this.Visible = false;
@@ -330,7 +325,7 @@ namespace bob_foo.Components
                 //aggiorno la fisica del gioco
                 space.Update();
 
-                if (balanceBoards != null && balanceBoards.Count >= 1) //update with balance board
+                if ((Game as Engine).usingBalanceBoard) //update with balance board
                 {
 
                     float horizontaldelta = 0;
@@ -368,18 +363,18 @@ namespace bob_foo.Components
                         //la percentuale di peso che si può spostare è limitata alla metà del peso corporeo
                         float forwardThreshold = 0.5f;
                         float lateralThreshold = 0.5f;
-                        float forwardMovement = (verticaldelta / total)/sensibility;
-                        float lateralMovement = (0.2f*horizontaldelta / total)/sensibility; //0.2 è per limitare il movimento laterale
+                        float forwardMovement = (verticaldelta / total)/(Game as Engine).sensibility;
+                        float lateralMovement = (0.2f*horizontaldelta / total)/(Game as Engine).sensibility; //0.2 è per limitare il movimento laterale
 
                         //gestione dei trashold per evitare che ci siano movimenti esagerati
                         if (verticaldelta / total > forwardThreshold)
-                            forwardMovement = forwardThreshold / sensibility;
+                            forwardMovement = forwardThreshold / (Game as Engine).sensibility;
                         if (verticaldelta / total < -forwardThreshold)
-                            forwardMovement = -forwardThreshold / sensibility;
+                            forwardMovement = -forwardThreshold / (Game as Engine).sensibility;
                         if (horizontaldelta / total > lateralThreshold)
-                            lateralMovement = 0.5f*lateralThreshold / sensibility;
+                            lateralMovement = 0.5f * lateralThreshold / (Game as Engine).sensibility;
                         if (horizontaldelta / total < -lateralThreshold)
-                            lateralMovement = -0.5f*lateralThreshold / sensibility;
+                            lateralMovement = -0.5f * lateralThreshold / (Game as Engine).sensibility;
                         
                         //effettuo lo spostamento del bob, proporzionale ai valori della bb
                         if ( forwardMovement>= 0.2)

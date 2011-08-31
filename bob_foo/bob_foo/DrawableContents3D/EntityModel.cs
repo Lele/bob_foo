@@ -59,7 +59,6 @@ namespace bob_foo.DrawableContents3D
             //There are a variety of properties available in the entity, try looking around
             //in the list to familiarize yourself with it.
             Matrix worldMatrix = Transform * entity.WorldTransform;
-
             model.CopyAbsoluteBoneTransformsTo(boneTransforms);
             foreach (ModelMesh mesh in model.Meshes)
             {

@@ -32,8 +32,9 @@ namespace bob_foo
         private SaveScore saveScore;
         private Menu menu;
         private int status;
-        public Vector2 sensibility;
+        public float sensibility;
         private int lastScore;
+        public Boolean usingBalanceBoard;
 
         public Engine()
         {
@@ -42,6 +43,7 @@ namespace bob_foo
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferredBackBufferWidth = 1000;
             Content.RootDirectory = "Content";
+            usingBalanceBoard = false;
             //old
             //level = new PlayScreen(this,balanceBoard);
             level = new PlayScreen(this, balanceBoards);
@@ -65,7 +67,7 @@ namespace bob_foo
         {
             // TODO: Add your initialization logic here
             
-            this.sensibility = new Vector2(0.7f, 0.5f);
+            this.sensibility = 0.4f;
             this.InitScores();
             base.Initialize();
         }

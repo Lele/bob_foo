@@ -22,6 +22,7 @@ namespace bob_foo.Components
         WiimoteCollection balanceBoards; //collezione di balance boards
         Texture2D background;
         Texture2D backgroundScore;
+        Texture2D backgroundPiste;
         Texture2D backgroundInstructions;
         Texture2D bluetoothInstruction;
         SpriteBatch spriteBatch;
@@ -29,16 +30,17 @@ namespace bob_foo.Components
         SpriteFont font2;
         int section;
         int selection;
-        int sensSelection;
-        int scoreDelay;
+        int keyDelay;
         int levelScoreDisplayed;
         float delay;
         float timer;
 
-        String[] option = { "NEW GAME", "SCORES", "SENSIBILITY", "INSTRUCTIONS", "EXIT" };
+        String[] option = { "NEW GAME", "SCORES", "SENSIBILITY", "CONTROLLERS", "EXIT" };
+        String[] piste = { "EASY", "MEDIUM", "HARD" };
         SpriteFont scoreFont;
         Boolean prevButtonStatus = true;
         Boolean prevKeyStatus = true;
+        Boolean choosenLevel = false;
         ScoreData.HighScoreData scores;
 
         //costruttore quando si usa una sola balanceboard
@@ -101,12 +103,7 @@ namespace bob_foo.Components
                         {
                             switch (selection)
                             {
-                                case 0:
-                                    game.SetStatus(1);
-                                    game.level.nextLevel();
-                                    this.Visible = false;
-                                    this.Enabled = false;
-                                    break;
+                                case 0: section = 4; break;
                                 case 1: section = 1; break;
                                 case 2: section = 2; break;
                                 case 3: section = 3; break;
@@ -118,22 +115,22 @@ namespace bob_foo.Components
                     {
                         if ((Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                             section = 0;
-                        if ((Keyboard.GetState().IsKeyDown(Keys.Right) && !prevKeyStatus && scoreDelay > 500))
+                        if ((Keyboard.GetState().IsKeyDown(Keys.Right) && !prevKeyStatus && keyDelay > 500))
                         {
                             levelScoreDisplayed++;
                             if (levelScoreDisplayed > 2)
                                 levelScoreDisplayed = 0;
-                            scoreDelay = 0;
+                            keyDelay = 0;
                         }
-                        else if ((Keyboard.GetState().IsKeyDown(Keys.Left) && !prevKeyStatus && scoreDelay > 500))
+                        else if ((Keyboard.GetState().IsKeyDown(Keys.Left) && !prevKeyStatus && keyDelay > 500))
                         {
                             levelScoreDisplayed--;
                             if (levelScoreDisplayed < 0)
                                 levelScoreDisplayed = 2;
-                            scoreDelay = 0;
+                            keyDelay = 0;
                         }
                         else
-                            scoreDelay += gameTime.ElapsedGameTime.Milliseconds;
+                            keyDelay += gameTime.ElapsedGameTime.Milliseconds;
                     } break;
                 case 2:
                     {
@@ -141,7 +138,6 @@ namespace bob_foo.Components
 
                         if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) || */(Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                         {
-                            sensSelection = 0;
                             section = 0;
                         }
                     } break;
@@ -149,7 +145,56 @@ namespace bob_foo.Components
                     {
                         if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) ||*/ (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
                             section = 0;
+                        if (Keyboard.GetState().IsKeyDown(Keys.Down) && keyDelay > 500)
+                        {
+                            if (game.usingBalanceBoard)
+                                game.usingBalanceBoard = false;
+                            else
+                                game.usingBalanceBoard = true;
+                            keyDelay = 0;
+                        }
+                        if (Keyboard.GetState().IsKeyDown(Keys.Up) && keyDelay > 500)
+                        {
+                            if (game.usingBalanceBoard)
+                                game.usingBalanceBoard = false;
+                            else
+                                game.usingBalanceBoard = true;
+                            keyDelay = 0;
+                        }
+                        keyDelay += gameTime.ElapsedGameTime.Milliseconds;
                     } break;
+                case 4:
+                       if(!choosenLevel)
+                               {
+                                        if (Keyboard.GetState().IsKeyDown(Keys.Down) && keyDelay > 500)
+                                        {
+                                            if (game.level.currLevel < 2)
+                                                game.level.currLevel++;
+                                            else
+                                                game.level.currLevel = 0;
+                                            keyDelay = 0;
+                                        }
+                                        else if (Keyboard.GetState().IsKeyDown(Keys.Up) && keyDelay > 500)
+                                        {
+                                            if (game.level.currLevel > 0)
+                                                game.level.currLevel--;
+                                            else
+                                                game.level.currLevel = 2;
+                                            keyDelay = 0;
+                                        }
+                                        else
+                                            keyDelay += gameTime.ElapsedGameTime.Milliseconds;
+                                        if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus)
+                                            choosenLevel= true;
+                                    }
+                                    else
+                                    {
+                                        game.SetStatus(1);
+                                        game.level.nextLevel();
+                                         this.Visible = false;
+                                        this.Enabled = false;
+                                        choosenLevel = false;
+                                    }break;
             }
             //prevButtonStatus = balanceBoards[0].WiimoteState.ButtonState.A;
             prevKeyStatus = Keyboard.GetState().IsKeyDown(Keys.Enter);
@@ -162,6 +207,7 @@ namespace bob_foo.Components
             backgroundScore = game.Content.Load<Texture2D>("Resources/Elements/menuScores");
             bluetoothInstruction = game.Content.Load<Texture2D>("Resources/bluetoothInstruction");
             backgroundInstructions = game.Content.Load<Texture2D>("Resources/Elements/menuInstructions");
+            backgroundPiste = game.Content.Load<Texture2D>("Resources/Elements/menu_piste");
             scoreFont = game.Content.Load<SpriteFont>("menuFont");
             font = game.Content.Load<SpriteFont>("menuFont");
             font2 = game.Content.Load<SpriteFont>("menuFont");
@@ -189,6 +235,7 @@ namespace bob_foo.Components
                 case 0:
                     {
                         spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
+                        spriteBatch.DrawString(font, "MENU:", new Vector2(390, 250), Color.Red);
                         for (int i = 0; i < option.Length; i++)
                         {
                             if (i != selection)
@@ -217,25 +264,36 @@ namespace bob_foo.Components
                     {
 
                         spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
-                        spriteBatch.DrawString(scoreFont, "SENSIBILITY:", new Vector2(380, 330), Color.Black);
-                        if (sensSelection == 0)
-                        {
-                            spriteBatch.DrawString(scoreFont, "Sensibility X ( 1-7 ) :", new Vector2(380, 400), Color.DarkRed);
-                            spriteBatch.DrawString(scoreFont, ((float)Math.Round((double)(8 - game.sensibility.X * 10), 2)).ToString(), new Vector2(380, 435), Color.DarkRed);
-                            spriteBatch.DrawString(scoreFont, "Sensibility Y ( 1-5 ) :", new Vector2(380, 470), Color.Black);
-                            spriteBatch.DrawString(scoreFont, ((float)Math.Round((double)(6 - game.sensibility.Y * 10), 2)).ToString(), new Vector2(380, 505), Color.Black);
-                        }
-                        if (sensSelection == 1)
-                        {
-                            spriteBatch.DrawString(scoreFont, "Sensibility X ( 1-7 ) :", new Vector2(380, 400), Color.Black);
-                            spriteBatch.DrawString(scoreFont, ((float)Math.Round((double)(8 - game.sensibility.X * 10), 2)).ToString(), new Vector2(380, 435), Color.Black);
-                            spriteBatch.DrawString(scoreFont, "Sensibility Y ( 1-5 ) :", new Vector2(380, 470), Color.DarkRed);
-                            spriteBatch.DrawString(scoreFont, ((float)Math.Round((double)(6 - game.sensibility.Y * 10), 2)).ToString(), new Vector2(380, 505), Color.DarkRed);
-                        }
+                        spriteBatch.DrawString(scoreFont, "SENSIBILITY:", new Vector2(360, 330), Color.White);
+                       
+                        spriteBatch.DrawString(scoreFont, "Sensibility ( 0.01 - 1 ) :", new Vector2(300, 400), Color.White);
+                        spriteBatch.DrawString(scoreFont, ((float)Math.Round((double)(game.sensibility), 2)).ToString(), new Vector2(450, 460), Color.DarkRed);
+        
                     } break;
                 case 3:
                     {
-                        spriteBatch.Draw(backgroundInstructions, new Vector2(0, 0), Color.White);
+                        spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
+                        if (!(Game as Engine).usingBalanceBoard)
+                        {
+                            spriteBatch.DrawString(scoreFont, "KEYBOARD", new Vector2(320, 300), Color.DarkRed);
+                            spriteBatch.DrawString(scoreFont, "BALANCE-BOARD", new Vector2(320, 360), Color.White);
+                        }
+                        else
+                        {
+                            spriteBatch.DrawString(scoreFont, "KEYBOARD", new Vector2(320, 300), Color.White);
+                            spriteBatch.DrawString(scoreFont, "BALANCE-BOARD", new Vector2(320, 360), Color.DarkRed);
+                        }
+                    } break;
+                case 4:
+                    {
+                        spriteBatch.Draw(backgroundPiste, new Vector2(0, 0), Color.White);
+                        for (int i = 0; i < piste.Length; i++)
+                        {
+                            if (i != game.level.currLevel)
+                                spriteBatch.DrawString(font, piste[i], new Vector2(400, 300 + (i * 100)), Color.White);
+                            else
+                                spriteBatch.DrawString(font, piste[i], new Vector2(400, 300 + (i * 100)), Color.DarkRed);
+                        }
                     } break;
             }
 
@@ -276,46 +334,18 @@ namespace bob_foo.Components
                 timer = 120f;
             if (timer > delay)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                if (Keyboard.GetState().IsKeyDown(Keys.Left) && game.sensibility< 1f)
                 {
-                    sensSelection++;
+                    game.sensibility = (float)Math.Round((double)(game.sensibility + 0.01f), 2);
                     timer = 0f;
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.Up))
+
+                else if (Keyboard.GetState().IsKeyDown(Keys.Right) && game.sensibility > 0.01f)
                 {
-                    sensSelection--;
+                    game.sensibility = (float)Math.Round((double)(game.sensibility - 0.01f), 2);
                     timer = 0f;
                 }
-                if (sensSelection > 1)
-                    sensSelection = 0;
-                if (sensSelection < 0)
-                    sensSelection = 1;
-                if (sensSelection == 0)
-                {
-                    if (Keyboard.GetState().IsKeyDown(Keys.Left) && game.sensibility.X < 0.7f)
-                    {
-                        game.sensibility.X = (float)Math.Round((double)(game.sensibility.X + 0.01f), 2);
-                        timer = 0f;
-                    }
-                    else if (Keyboard.GetState().IsKeyDown(Keys.Right) && game.sensibility.X > 0.1f)
-                    {
-                        game.sensibility.X = (float)Math.Round((double)(game.sensibility.X - 0.01f), 2);
-                        timer = 0f;
-                    }
-                }
-                else if (sensSelection == 1)
-                {
-                    if (Keyboard.GetState().IsKeyDown(Keys.Left) && game.sensibility.Y < 0.5f)
-                    {
-                        game.sensibility.Y = (float)Math.Round((double)(game.sensibility.Y + 0.01f), 2);
-                        timer = 0f;
-                    }
-                    else if (Keyboard.GetState().IsKeyDown(Keys.Right) && game.sensibility.Y > 0.1f)
-                    {
-                        game.sensibility.Y = (float)Math.Round((double)(game.sensibility.Y - 0.01f), 2);
-                        timer = 0f;
-                    }
-                }
+              
             }
 
         }
