@@ -1,0 +1,37 @@
+Content\Resources\background.xnb
+Content\Resources\bluetoothInstruction.xnb
+Content\Resources\Elements\bang.xnb
+Content\Resources\Elements\bersaglio.xnb
+Content\Resources\Elements\bullet ground hole.xnb
+Content\Resources\Elements\bullet hole.xnb
+Content\Resources\Elements\bullet wood hole.xnb
+Content\Resources\Elements\bullet.xnb
+Content\Resources\Elements\menu.xnb
+Content\Resources\Elements\menuInstructions.xnb
+Content\Resources\Elements\menuScores.xnb
+Content\Resources\Elements\mirino.xnb
+Content\Textures\Marble.xnb
+Content\Textures\wedge_p1_diff_v1.xnb
+Content\models\Casco_blu.xnb
+Content\Resources\Sound\bang.xnb
+Content\audio\SummerSong.xnb
+Content\audio\engine_2.xnb
+Content\audio\hyperspace_activate.xnb
+Content\bigfont.xnb
+Content\countDownFont.xnb
+Content\font.xnb
+Content\menuFont.xnb
+Content\shotFont.xnb
+Content\models\bob02.xnb
+Content\models\cube.xnb
+Content\models\pista03.xnb
+Content\models\playground.xnb
+Content\models\marble.xnb
+Content\models\pista07.xnb
+Content\models\bob09.xnb
+Content\models\pista_2.0_bo.xnb
+Content\models\pista09.xnb
+Content\models\pista09.1.xnb
+Content\models\pista09.4.xnb
+Content\models\PistaEasy03Frecce.xnb
+Content\models\bob_con_bobmen_4.1.xnb

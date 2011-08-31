@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\background.xnb</Output>
-      <Time>2011-08-22T10:07:28.9704882+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\background.xnb</Output>
+      <Time>2011-08-31T14:43:12.3588+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\bluetoothInstruction.jpg</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\bluetoothInstruction.xnb</Output>
-      <Time>2011-08-22T10:07:28.9814888+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\bluetoothInstruction.xnb</Output>
+      <Time>2011-08-31T14:43:12.3628+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\bang.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bang.xnb</Output>
-      <Time>2011-08-22T10:07:28.6374781+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bang.xnb</Output>
+      <Time>2011-08-31T14:43:12.2848+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\bersaglio.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bersaglio.xnb</Output>
-      <Time>2011-08-22T10:07:28.6374781+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bersaglio.xnb</Output>
+      <Time>2011-08-31T14:43:12.2868+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\bullet ground hole.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet ground hole.xnb</Output>
-      <Time>2011-08-22T10:07:28.6374781+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet ground hole.xnb</Output>
+      <Time>2011-08-31T14:43:12.2878+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\bullet hole.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet hole.xnb</Output>
-      <Time>2011-08-22T10:07:28.6374781+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet hole.xnb</Output>
+      <Time>2011-08-31T14:43:12.2898+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\bullet wood hole.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet wood hole.xnb</Output>
-      <Time>2011-08-22T10:07:28.6374781+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet wood hole.xnb</Output>
+      <Time>2011-08-31T14:43:12.2918+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\bullet.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet.xnb</Output>
-      <Time>2011-08-22T10:07:28.6474781+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\bullet.xnb</Output>
+      <Time>2011-08-31T14:43:12.2928+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\menu.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menu.xnb</Output>
-      <Time>2011-08-30T17:25:43.772046+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menu.xnb</Output>
+      <Time>2011-08-31T14:43:12.2938+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\menuInstructions.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menuInstructions.xnb</Output>
-      <Time>2011-08-22T10:07:28.8384806+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menuInstructions.xnb</Output>
+      <Time>2011-08-31T14:43:12.3178+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\menuScores.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menuScores.xnb</Output>
-      <Time>2011-08-22T10:07:28.9434866+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\menuScores.xnb</Output>
+      <Time>2011-08-31T14:43:12.3468+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Elements\mirino.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\mirino.xnb</Output>
-      <Time>2011-08-22T10:07:28.9464868+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Elements\mirino.xnb</Output>
+      <Time>2011-08-31T14:43:12.3488+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\Marble.jpg</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Textures\Marble.xnb</Output>
-      <Time>2011-08-22T10:07:28.9864891+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Textures\Marble.xnb</Output>
+      <Time>2011-08-31T14:43:12.3658+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\wedge_p1_diff_v1.tga</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb</Output>
-      <Time>2011-08-22T10:07:28.9994898+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb</Output>
+      <Time>2011-08-31T14:43:12.3718+02:00</Time>
     </Item>
     <Item>
       <Source>models\Casco_blu.jpg</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\Casco_blu.xnb</Output>
-      <Time>2011-08-26T18:24:52.0514006+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\Casco_blu.xnb</Output>
+      <Time>2011-08-31T14:43:13.0148+02:00</Time>
     </Item>
     <Item>
       <Source>Resources\Sound\bang.wav</Source>
@@ -142,8 +142,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Sound\bang.xnb</Output>
-      <Time>2011-08-22T10:07:28.9534872+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\Resources\Sound\bang.xnb</Output>
+      <Time>2011-08-31T14:43:12.3528+02:00</Time>
     </Item>
     <Item>
       <Source>audio\SummerSong.wav</Source>
@@ -151,8 +151,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\SummerSong.xnb</Output>
-      <Time>2011-08-22T16:46:34.5155109+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\SummerSong.xnb</Output>
+      <Time>2011-08-31T14:43:12.9898+02:00</Time>
     </Item>
     <Item>
       <Source>audio\engine_2.wav</Source>
@@ -160,8 +160,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\engine_2.xnb</Output>
-      <Time>2011-08-24T10:03:05.6923756+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\engine_2.xnb</Output>
+      <Time>2011-08-31T14:43:12.9988+02:00</Time>
     </Item>
     <Item>
       <Source>audio\hyperspace_activate.wav</Source>
@@ -169,8 +169,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\hyperspace_activate.xnb</Output>
-      <Time>2011-08-24T10:03:05.7003761+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\audio\hyperspace_activate.xnb</Output>
+      <Time>2011-08-31T14:43:13.0048+02:00</Time>
     </Item>
     <Item>
       <Source>bigfont.spritefont</Source>
@@ -178,8 +178,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\bigfont.xnb</Output>
-      <Time>2011-08-22T10:07:29.00249+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\bigfont.xnb</Output>
+      <Time>2011-08-31T14:43:13.0058+02:00</Time>
     </Item>
     <Item>
       <Source>countDownFont.spritefont</Source>
@@ -187,8 +187,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\countDownFont.xnb</Output>
-      <Time>2011-08-22T10:07:29.037492+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\countDownFont.xnb</Output>
+      <Time>2011-08-31T14:43:13.0098+02:00</Time>
     </Item>
     <Item>
       <Source>font.spritefont</Source>
@@ -196,8 +196,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2011-08-22T10:07:29.0404922+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2011-08-31T14:43:13.0098+02:00</Time>
     </Item>
     <Item>
       <Source>menuFont.spritefont</Source>
@@ -205,8 +205,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\menuFont.xnb</Output>
-      <Time>2011-08-22T10:07:29.0434924+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\menuFont.xnb</Output>
+      <Time>2011-08-31T14:43:13.0108+02:00</Time>
     </Item>
     <Item>
       <Source>shotFont.spritefont</Source>
@@ -214,8 +214,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\shotFont.xnb</Output>
-      <Time>2011-08-22T10:07:30.209559+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\shotFont.xnb</Output>
+      <Time>2011-08-31T14:43:13.9758+02:00</Time>
     </Item>
     <Item>
       <Source>models\bob02.fbx</Source>
@@ -223,11 +223,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob02.xnb</Output>
-      <Time>2011-08-22T10:07:29.0654936+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob02.xnb</Output>
+      <Time>2011-08-31T14:43:13.0218+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\bob02_0.xml</Key>
-        <Value>2011-08-30T17:25:48.296054+02:00</Value>
+        <Value>2011-08-31T15:10:58.0828+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -236,11 +236,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\cube.xnb</Output>
-      <Time>2011-08-22T10:07:29.5185195+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\cube.xnb</Output>
+      <Time>2011-08-31T14:43:13.1728+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\cube_0.xml</Key>
-        <Value>2011-08-30T17:25:48.327254+02:00</Value>
+        <Value>2011-08-31T15:10:58.2698+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -249,11 +249,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista03.xnb</Output>
-      <Time>2011-08-22T10:07:29.5345204+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista03.xnb</Output>
+      <Time>2011-08-31T14:43:13.1828+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\pista03_0.xml</Key>
-        <Value>2011-08-30T17:25:48.4364542+02:00</Value>
+        <Value>2011-08-31T15:10:58.4408+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -262,11 +262,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\playground.xnb</Output>
-      <Time>2011-08-22T10:07:29.8195367+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\playground.xnb</Output>
+      <Time>2011-08-31T14:43:13.4428+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\playground_0.xml</Key>
-        <Value>2011-08-30T17:25:48.9356551+02:00</Value>
+        <Value>2011-08-31T15:10:59.4278+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -275,11 +275,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\marble.xnb</Output>
-      <Time>2011-08-22T10:07:29.5245199+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\marble.xnb</Output>
+      <Time>2011-08-31T14:43:13.1768+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\marble_0.xml</Key>
-        <Value>2011-08-30T17:25:48.9980552+02:00</Value>
+        <Value>2011-08-31T15:10:59.5798+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -288,11 +288,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista07.xnb</Output>
-      <Time>2011-08-22T10:07:29.7345319+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista07.xnb</Output>
+      <Time>2011-08-31T14:43:13.2538+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\pista07_0.xml</Key>
-        <Value>2011-08-30T17:25:51.3068593+02:00</Value>
+        <Value>2011-08-31T15:11:03.3448+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -301,11 +301,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob09.xnb</Output>
-      <Time>2011-08-22T10:07:29.5075189+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob09.xnb</Output>
+      <Time>2011-08-31T14:43:13.1688+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\bob09_0.xml</Key>
-        <Value>2011-08-30T17:25:56.1584678+02:00</Value>
+        <Value>2011-08-31T15:11:11.4098+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -314,11 +314,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista_2.0_bo.xnb</Output>
-      <Time>2011-08-26T09:54:10.7669273+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista_2.0_bo.xnb</Output>
+      <Time>2011-08-31T14:43:13.4258+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\pista_2.0_bo_0.xml</Key>
-        <Value>2011-08-30T17:25:57.7496706+02:00</Value>
+        <Value>2011-08-31T15:11:14.1518+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -327,11 +327,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista09.xnb</Output>
-      <Time>2011-08-26T11:20:00.1844572+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista09.xnb</Output>
+      <Time>2011-08-31T14:43:13.4088+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\pista09_0.xml</Key>
-        <Value>2011-08-30T17:26:00.4796754+02:00</Value>
+        <Value>2011-08-31T15:11:18.2498+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -340,11 +340,50 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista09.1.xnb</Output>
-      <Time>2011-08-26T12:04:24.4608451+02:00</Time>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista09.1.xnb</Output>
+      <Time>2011-08-31T14:43:13.3498+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\pista09.1_0.xml</Key>
-        <Value>2011-08-30T17:26:03.3032803+02:00</Value>
+        <Value>2011-08-31T15:11:22.4658+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\pista09.4.fbx</Source>
+      <Name>models\pista09.4</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\pista09.4.xnb</Output>
+      <Time>2011-08-31T15:08:30.4388+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\pista09.4_0.xml</Key>
+        <Value>2011-08-31T15:11:27.9818+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\PistaEasy03Frecce.fbx</Source>
+      <Name>models\PistaEasy03Frecce</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\PistaEasy03Frecce.xnb</Output>
+      <Time>2011-08-31T15:08:39.4438+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\PistaEasy03Frecce_0.xml</Key>
+        <Value>2011-08-31T15:11:31.3138+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\bob_con_bobmen_4.1.fbx</Source>
+      <Name>models\bob_con_bobmen_4.1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\models\bob_con_bobmen_4.1.xnb</Output>
+      <Time>2011-08-31T15:08:48.2668+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\bob_con_bobmen_4.1_0.xml</Key>
+        <Value>2011-08-31T15:11:44.5278+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -352,70 +391,91 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\bob02_0.xml</Output>
-      <Time>2011-08-22T10:07:29.0654936+02:00</Time>
+      <Time>2011-08-31T14:43:13.0218+02:00</Time>
     </Item>
     <Item>
       <Source>models\cube.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\cube_0.xml</Output>
-      <Time>2011-08-22T10:07:29.5185195+02:00</Time>
+      <Time>2011-08-31T14:43:13.1728+02:00</Time>
     </Item>
     <Item>
       <Source>models\pista03.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\pista03_0.xml</Output>
-      <Time>2011-08-22T10:07:29.5345204+02:00</Time>
+      <Time>2011-08-31T14:43:13.1828+02:00</Time>
     </Item>
     <Item>
       <Source>models\playground.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\playground_0.xml</Output>
-      <Time>2011-08-22T10:07:29.8195367+02:00</Time>
+      <Time>2011-08-31T14:43:13.4428+02:00</Time>
     </Item>
     <Item>
       <Source>models\marble.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\marble_0.xml</Output>
-      <Time>2011-08-22T10:07:29.5245199+02:00</Time>
+      <Time>2011-08-31T14:43:13.1768+02:00</Time>
     </Item>
     <Item>
       <Source>models\pista07.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\pista07_0.xml</Output>
-      <Time>2011-08-22T10:07:29.7345319+02:00</Time>
+      <Time>2011-08-31T14:43:13.2538+02:00</Time>
     </Item>
     <Item>
       <Source>models\bob09.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\bob09_0.xml</Output>
-      <Time>2011-08-22T10:07:29.5075189+02:00</Time>
+      <Time>2011-08-31T14:43:13.1688+02:00</Time>
     </Item>
     <Item>
       <Source>models\pista_2.0_bo.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\pista_2.0_bo_0.xml</Output>
-      <Time>2011-08-26T09:54:10.7669273+02:00</Time>
+      <Time>2011-08-31T14:43:13.4258+02:00</Time>
     </Item>
     <Item>
       <Source>models\pista09.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\pista09_0.xml</Output>
-      <Time>2011-08-26T11:20:00.1844572+02:00</Time>
+      <Time>2011-08-31T14:43:13.4088+02:00</Time>
     </Item>
     <Item>
       <Source>models\pista09.1.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\pista09.1_0.xml</Output>
-      <Time>2011-08-26T12:04:24.4608451+02:00</Time>
+      <Time>2011-08-31T14:43:13.3498+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\pista09.4.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\pista09.4_0.xml</Output>
+      <Time>2011-08-31T15:08:30.4388+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\PistaEasy03Frecce.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\PistaEasy03Frecce_0.xml</Output>
+      <Time>2011-08-31T15:08:39.4438+02:00</Time>
+    </Item>
+    <Item>
+      <Source>models\bob_con_bobmen_4.1.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\bob_con_bobmen_4.1_0.xml</Output>
+      <Time>2011-08-31T15:08:48.2668+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -423,10 +483,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Simone\bob_foo\bob_foo\bob_fooContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Simone\bob_foo\bob_foo\bob_foo\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Simone\bob_foo\bob_foo\bob_fooContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Simone\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_fooContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Lele\Documents\Visual Studio 2010\Projects\bob_foo\bob_foo\bob_foo\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -455,7 +515,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-04-11T22:22:47.7561794+02:00</Value>
+        <Value>2011-04-11T15:38:59.9488+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

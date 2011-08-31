@@ -159,12 +159,10 @@ namespace bob_foo.Components
 
             BackGroundMod = Game.Content.Load<Model>("models/playground");
 
-            //old bob
-            bobMod = Game.Content.Load<Model>("models/bob09");
-            //bobMod.Root.Transform = Matrix.CreateFromYawPitchRoll(0, MathHelper.PiOver2, 0) * bobMod.Root.Transform;
+            //bob con bobbisti
+            bobMod = Game.Content.Load<Model>("models/bob_con_bobmen_4.1");
+            bobMod.Root.Transform = Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2, MathHelper.PiOver2, 0) * Matrix.CreateTranslation(0, -3.1f, 3f) * bobMod.Root.Transform;
             
-            //bob con pupazzetti
-            //bobMod = Game.Content.Load<Model>("models/bobbista_scheletro_collo_SKIFO");
 
             //calcolo vertici che mi serviranno per la bounding box
             TriangleMesh.GetVerticesAndIndicesFromModel(bobMod, out bobVertices, out bobIndices);
@@ -186,10 +184,10 @@ namespace bob_foo.Components
             for (int i = 0; i < stage.Length; i++)
             {
                 //stage[i] = Game.Content.Load<Model>("models/pista07");
-                stage[i] = Game.Content.Load<Model>("models/pista09.1");
+                stage[i] = Game.Content.Load<Model>("models/pista09.4");
                 //stage[i] = Game.Content.Load<Model>("models/pista09.2");
                 //la nuova pista va girata di 90 gradi per allinearla con il bob
-                stage[i].Root.Transform = Matrix.CreateFromYawPitchRoll(-MathHelper.PiOver2, 0, 0) * stage[i].Root.Transform;
+                //stage[i].Root.Transform = Matrix.CreateFromYawPitchRoll(-MathHelper.PiOver2, 0, 0) * stage[i].Root.Transform;
             }
             //inizializzo lo spazio fisico
             space = new Space();
@@ -220,9 +218,9 @@ namespace bob_foo.Components
             //creo il modello 3d collegato al modello fisico
             stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this);
             //calcolo i punti per la costruzione del piano che determina la fine del livello
-            firstPlanePoint = stageMod.getBonePosition("Bone_0", Vector3.Zero);
-            secondPlanePoint = stageMod.getBonePosition("Bone_2", Vector3.Zero);
-            thirdPlanePoint = stageMod.getBonePosition("Bone_3", Vector3.Zero);
+            firstPlanePoint = stageMod.getBonePosition("Finish", Vector3.Zero);
+            secondPlanePoint = stageMod.getBonePosition("Finish", Vector3.Zero);
+            thirdPlanePoint = stageMod.getBonePosition("Finish", Vector3.Zero);
             //firstPlanePoint = stageMod.getBonePosition("BoneDown", Vector3.Zero);
             //secondPlanePoint = stageMod.getBonePosition("BoneLeft", Vector3.Zero);
             //thirdPlanePoint = stageMod.getBonePosition("BoneRight", Vector3.Zero);
