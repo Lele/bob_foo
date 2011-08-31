@@ -11,21 +11,31 @@ namespace bob_foo.Components
 {
     public class ScoreData
     {
-        [Serializable]
-        public struct HighScoreData
+        public struct LevelScoreData
         {
             public string[] PlayerName;
             public int[] Score;
-            
+
 
             public int Count;
 
-            public HighScoreData(int count)
+            public LevelScoreData(int count)
             {
                 PlayerName = new string[count];
                 Score = new int[count];
                 Count = count;
             }
+        }
+        [Serializable]
+        public struct HighScoreData
+        {
+           public LevelScoreData[] level;
+           public HighScoreData(int count)
+           {
+               level = new LevelScoreData[3];
+               for (int i = 0; i < 3; i++)
+                   level[i] = new LevelScoreData(count);
+           }
         }
 
         public static void SaveHighScores(HighScoreData data, string filename)
@@ -34,7 +44,7 @@ namespace bob_foo.Components
             string fullpath = filename;
 
             // Open the file, creating it if necessary
-            Stream stream = TitleContainer.OpenStream(fullpath);
+            FileStream stream = new FileStream(fullpath,FileMode.OpenOrCreate);
             try
             {
                 // Convert the object to XML data and put it in the stream
@@ -56,7 +66,7 @@ namespace bob_foo.Components
             string fullpath = filename;
 
             // Open the file, creating it if necessary
-            Stream stream = TitleContainer.OpenStream(fullpath);
+            FileStream stream = new FileStream(fullpath, FileMode.OpenOrCreate);
             
             try
             {
@@ -74,15 +84,15 @@ namespace bob_foo.Components
             return (data);
         }
 
-        public static void SaveHighScore(string name, int score)
+        public static void SaveHighScore(string name, int score, int level)
         {
             // Create the data to save
             HighScoreData data = LoadHighScores("highscore.xml");
 
             int scoreIndex = -1;
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.level[level].Count; i++)
             {
-                if (score > data.Score[i])
+                if (score > data.level[level].Score[i])
                 {
                     scoreIndex = i;
                     break;
@@ -92,15 +102,15 @@ namespace bob_foo.Components
             if (scoreIndex > -1)
             {
                 //New high score found ... do swaps
-                for (int i = data.Count - 1; i > scoreIndex; i--)
+                for (int i = data.level[level].Count - 1; i > scoreIndex; i--)
                 {
-                    data.PlayerName[i] = data.PlayerName[i - 1];
-                    data.Score[i] = data.Score[i - 1];
+                    data.level[level].PlayerName[i] = data.level[level].PlayerName[i - 1];
+                    data.level[level].Score[i] = data.level[level].Score[i - 1];
                    
                 }
 
-                data.PlayerName[scoreIndex] = name; //Retrieve User Name Here
-                data.Score[scoreIndex] = score;
+                data.level[level].PlayerName[scoreIndex] = name; //Retrieve User Name Here
+                data.level[level].Score[scoreIndex] = score;
                 
 
                 SaveHighScores(data, "highscore.xml");

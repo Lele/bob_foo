@@ -74,7 +74,7 @@ namespace bob_foo.Components
         private void SendScore()
         {
 
-            ScoreData.SaveHighScore(name, game.GetScore());
+            ScoreData.SaveHighScore(name, game.GetScore(),game.GetLevel());
             this.Enabled = false;
             this.Visible = false;
             name = null;
@@ -137,7 +137,7 @@ namespace bob_foo.Components
             spriteBatch.Begin();
 
             spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
-            spriteBatch.DrawString(font, "Your score is: " + game.GetScore() + "\n type your name.", textPosition, Color.Black);
+            spriteBatch.DrawString(font, "Your time is: " + Math.Floor(game.GetScore()/1000f / 60f) +"m"+game.GetScore()/1000f % 60 +"s"+ "\n type your name.", textPosition, Color.Black);
 
             {
                 pulseTimer += (float)gameTime.ElapsedGameTime.Milliseconds;

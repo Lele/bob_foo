@@ -81,45 +81,47 @@ namespace bob_foo
                 //If the file doesn't exist, make a fake one...
                 // Create the data to save
                 ScoreData.HighScoreData data = new ScoreData.HighScoreData(10);
-                data.PlayerName[0] = "ALEX";
+                data.level[0].PlayerName[0] = "ALEX";
 
-                data.Score[0] = 200500;
+                data.level[0].Score[0] = 180000;
 
-                data.PlayerName[1] = "PAOLA";
+                data.level[0].PlayerName[1] = "PAOLA";
 
-                data.Score[1] = 187000;
+                data.level[0].Score[1] = 180000;
 
-                data.PlayerName[2] = "LELE";
+                data.level[0].PlayerName[2] = "LELE";
 
-                data.Score[2] = 113300;
+                data.level[0].Score[2] = 180000;
 
-                data.PlayerName[3] = "TEO";
+                data.level[0].PlayerName[3] = "TEO";
 
-                data.Score[3] = 95100;
+                data.level[0].Score[3] = 180000;
 
-                data.PlayerName[4] = "FRANCO";
+                data.level[0].PlayerName[4] = "FRANCO";
 
-                data.Score[4] = 1000;
+                data.level[0].Score[4] = 180000;
 
-                data.PlayerName[5] = "GIULIANO";
+                data.level[0].PlayerName[5] = "GIULIANO";
 
-                data.Score[5] = 900;
+                data.level[0].Score[5] = 180000;
 
-                data.PlayerName[6] = "TOMMASO";
+                data.level[0].PlayerName[6] = "TOMMASO";
 
-                data.Score[6] = 800;
+                data.level[0].Score[6] = 180000;
 
-                data.PlayerName[7] = "NICO";
+                data.level[0].PlayerName[7] = "NICO";
 
-                data.Score[7] = 500;
+                data.level[0].Score[7] = 180000;
 
-                data.PlayerName[8] = "MANUEL";
+                data.level[0].PlayerName[8] = "MANUEL";
 
-                data.Score[8] = 400;
+                data.level[0].Score[8] = 180000;
 
-                data.PlayerName[9] = "ANDREA";
+                data.level[0].PlayerName[9] = "ANDREA";
 
-                data.Score[9] = 100;
+                data.level[0].Score[9] = 180000;
+
+                data.level[1] = data.level[2] = data.level[0];
 
                 ScoreData.SaveHighScores(data, "highscore.xml");
             }
@@ -204,6 +206,10 @@ namespace bob_foo
         public int GetScore()
         {
             return lastScore;
+        }
+        public int GetLevel()
+        {
+            return level.currLevel;
         }
     }
 }

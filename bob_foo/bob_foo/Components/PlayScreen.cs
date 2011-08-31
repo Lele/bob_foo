@@ -51,7 +51,7 @@ namespace bob_foo.Components
         public MouseState MouseState;
         
         //numero del livello
-        private int currLevel;
+        public int currLevel;
 
         //modelli 3d del livello e del background
         private StaticModel stageMod;
@@ -234,7 +234,7 @@ namespace bob_foo.Components
 
             //background
             TriangleMesh.GetVerticesAndIndicesFromModel(BackGroundMod, out vertices, out indices);
-            var bgMesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(0, -60, 0)));
+            var bgMesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(0, -100, 0)));
             space.Add(bgMesh);
             bgMod = new StaticModel(BackGroundMod, bgMesh.WorldTransform.Matrix, Game, this);
             Game.Components.Add(bgMod);
