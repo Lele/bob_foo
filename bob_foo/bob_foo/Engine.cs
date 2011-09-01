@@ -46,6 +46,7 @@ namespace bob_foo
 
             Content.RootDirectory = "Content";
             usingBalanceBoard = false;
+            balanceBoards = new WiimoteCollection();
             //old
             //level = new PlayScreen(this,balanceBoard);
             level = new PlayScreen(this, balanceBoards);
@@ -87,43 +88,43 @@ namespace bob_foo
                 ScoreData.HighScoreData data = new ScoreData.HighScoreData(10);
                 data.level[0].PlayerName[0] = "ALEX";
 
-                data.level[0].Score[0] = 180000;
+                data.level[0].Score[0] = -180000;
 
                 data.level[0].PlayerName[1] = "PAOLA";
 
-                data.level[0].Score[1] = 180000;
+                data.level[0].Score[1] = -180000;
 
                 data.level[0].PlayerName[2] = "LELE";
 
-                data.level[0].Score[2] = 180000;
+                data.level[0].Score[2] = -180000;
 
                 data.level[0].PlayerName[3] = "TEO";
 
-                data.level[0].Score[3] = 180000;
+                data.level[0].Score[3] = -180000;
 
                 data.level[0].PlayerName[4] = "FRANCO";
 
-                data.level[0].Score[4] = 180000;
+                data.level[0].Score[4] = -180000;
 
                 data.level[0].PlayerName[5] = "GIULIANO";
 
-                data.level[0].Score[5] = 180000;
+                data.level[0].Score[5] = -180000;
 
                 data.level[0].PlayerName[6] = "TOMMASO";
 
-                data.level[0].Score[6] = 180000;
+                data.level[0].Score[6] = -180000;
 
                 data.level[0].PlayerName[7] = "NICO";
 
-                data.level[0].Score[7] = 180000;
+                data.level[0].Score[7] = -180000;
 
                 data.level[0].PlayerName[8] = "MANUEL";
 
-                data.level[0].Score[8] = 180000;
+                data.level[0].Score[8] = -180000;
 
                 data.level[0].PlayerName[9] = "ANDREA";
 
-                data.level[0].Score[9] = 180000;
+                data.level[0].Score[9] = -180000;
 
                 data.level[1] = data.level[2] = data.level[0];
 

@@ -60,7 +60,7 @@ namespace bob_foo.DrawableContents3D
             base.Draw(gameTime);
         }
 
-        public Vector3 getBonePosition(string boneName, Vector3 origin)
+        public Vector3 getBonePosition(string boneName)
         {
             //matrice di trasformazione che dall'origine mi porta al centro del modello
             //partiamo dalla trasformazione della bone che stiamo cercando, quindi le altre matrici andranno moltiplicate a destra
@@ -81,7 +81,7 @@ namespace bob_foo.DrawableContents3D
             }
 
             //prendo il punto è lo moltiplico per la matrice di trasformazione complessiva
-            Vector3 bonePosition = Vector3.Transform(origin,fromOriginToBoneTransform);
+            Vector3 bonePosition = Vector3.Transform(Vector3.Zero,fromOriginToBoneTransform);
             
             return bonePosition;
 

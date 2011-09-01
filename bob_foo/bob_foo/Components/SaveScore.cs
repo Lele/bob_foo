@@ -137,19 +137,19 @@ namespace bob_foo.Components
             spriteBatch.Begin();
 
             spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
-            spriteBatch.DrawString(font, "Your time is: " + Math.Floor(game.GetScore()/1000f / 60f) +"m"+Math.Floor(game.GetScore()/1000f % 60) +"s"+ "\n type your name.", textPosition, Color.Black);
+            spriteBatch.DrawString(font, "Your time is: " + Math.Floor(-game.GetScore()/1000f / 60f) +"m"+Math.Floor(-game.GetScore()/1000f % 60) +"s"+ "\n type your name.", textPosition, Color.White);
 
             {
                 pulseTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
                 if (pulseTimer < pulseDelay)
                 {
-                    if (name != null) spriteBatch.DrawString(font, name + "_", namePosition, Color.Black);
-                    else spriteBatch.DrawString(font, "_", namePosition, Color.Black);
+                    if (name != null) spriteBatch.DrawString(font, name + "_", namePosition, Color.White);
+                    else spriteBatch.DrawString(font, "_", namePosition, Color.White);
                 }
 
                 else if (pulseTimer < 2 * pulseDelay && pulseTimer > pulseDelay)
                 {
-                    if (name != null) spriteBatch.DrawString(font, name, namePosition, Color.Black);
+                    if (name != null) spriteBatch.DrawString(font, name, namePosition, Color.White);
 
                 }
 
@@ -157,7 +157,7 @@ namespace bob_foo.Components
                 {
 
                     pulseTimer = 0;
-                    if (name != null) spriteBatch.DrawString(font, name, namePosition, Color.Black);
+                    if (name != null) spriteBatch.DrawString(font, name, namePosition, Color.White);
                 }
             }
 

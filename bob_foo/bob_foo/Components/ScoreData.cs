@@ -44,7 +44,7 @@ namespace bob_foo.Components
             string fullpath = filename;
 
             // Open the file, creating it if necessary
-            FileStream stream = new FileStream(fullpath,FileMode.OpenOrCreate);
+            FileStream stream = new FileStream(fullpath,FileMode.Truncate);
             try
             {
                 // Convert the object to XML data and put it in the stream

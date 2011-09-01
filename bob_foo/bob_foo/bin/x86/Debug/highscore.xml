@@ -3,6 +3,34 @@
   <level>
     <LevelScoreData>
       <PlayerName>
+        <string>LELE</string>
+        <string>EL</string>
+        <string>LELE</string>
+        <string>ALEX</string>
+        <string>PAOLA</string>
+        <string>LELE</string>
+        <string>TEO</string>
+        <string>FRANCO</string>
+        <string>GIULIANO</string>
+        <string>TOMMASO</string>
+      </PlayerName>
+      <Score>
+        <int>-49248</int>
+        <int>-51248</int>
+        <int>-52112</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+      </Score>
+      <Count>10</Count>
+    </LevelScoreData>
+    <LevelScoreData>
+      <PlayerName>
+        <string>ELLE</string>
         <string>ALEX</string>
         <string>PAOLA</string>
         <string>LELE</string>
@@ -12,19 +40,18 @@
         <string>TOMMASO</string>
         <string>NICO</string>
         <string>MANUEL</string>
-        <string>ANDREA</string>
       </PlayerName>
       <Score>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
+        <int>-63312</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
       </Score>
       <Count>10</Count>
     </LevelScoreData>
@@ -42,43 +69,16 @@
         <string>ANDREA</string>
       </PlayerName>
       <Score>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-      </Score>
-      <Count>10</Count>
-    </LevelScoreData>
-    <LevelScoreData>
-      <PlayerName>
-        <string>ALEX</string>
-        <string>PAOLA</string>
-        <string>LELE</string>
-        <string>TEO</string>
-        <string>FRANCO</string>
-        <string>GIULIANO</string>
-        <string>TOMMASO</string>
-        <string>NICO</string>
-        <string>MANUEL</string>
-        <string>ANDREA</string>
-      </PlayerName>
-      <Score>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
-        <int>180000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
+        <int>-68000</int>
       </Score>
       <Count>10</Count>
     </LevelScoreData>

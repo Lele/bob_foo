@@ -60,35 +60,35 @@ namespace bob_foo.Components
             if (gameOver && selection == 0)
             {
                 (Game as Engine).spriteBatch.DrawString(timeFont, "GAME OVER", new Vector2(400, 160), Color.White);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 220), Color.DarkRed);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 260), Color.Red);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 220), Color.Red);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 260), Color.DarkRed);
             }
             if (gameOver && selection == 1)
             {
                 (Game as Engine).spriteBatch.DrawString(timeFont, "GAME OVER", new Vector2(400, 160), Color.White);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 220), Color.Red);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 260), Color.DarkRed);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 220), Color.DarkRed);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 260), Color.Red);
             }
             if (pause && selection == 0)
             {
                 (Game as Engine).spriteBatch.DrawString(timeFont, "PAUSE", new Vector2(400, 160), Color.White);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Resume", new Vector2(400, 220), Color.DarkRed);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 260), Color.Red);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 300), Color.Red);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Resume", new Vector2(400, 220), Color.Red);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 260), Color.DarkRed);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 300), Color.DarkRed);
             }
             if (pause && selection == 1)
             {
                 (Game as Engine).spriteBatch.DrawString(timeFont, "PAUSE", new Vector2(400, 160), Color.White);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Resume", new Vector2(400, 220), Color.Red);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 260), Color.DarkRed);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 300), Color.Red);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Resume", new Vector2(400, 220), Color.DarkRed);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 260), Color.Red);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 300), Color.DarkRed);
             }
             if (pause && selection == 2)
             {
                 (Game as Engine).spriteBatch.DrawString(timeFont, "PAUSE", new Vector2(400, 160), Color.White);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Resume", new Vector2(400, 220), Color.Red);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 260), Color.Red);
-                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 300), Color.DarkRed);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Resume", new Vector2(400, 220), Color.DarkRed);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Play Again", new Vector2(400, 260), Color.DarkRed);
+                (Game as Engine).spriteBatch.DrawString(timeFont, "Menu", new Vector2(400, 300), Color.Red);
             }
             (Game as Engine).spriteBatch.End();
             GraphicsDevice.BlendState = BlendState.Opaque;

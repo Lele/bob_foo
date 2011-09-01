@@ -148,6 +148,7 @@ namespace bob_foo.Components
                             section = 0;
                             if (game.usingBalanceBoard)
                             {
+                                balanceBoards.FindAllWiimotes();
                                 for (int i=0; i < balanceBoards.Count; i++ )
                                     balanceBoards[i].Connect();
                             }
@@ -201,6 +202,7 @@ namespace bob_foo.Components
                                     }
                                     else
                                     {
+                                        section = 0;
                                         game.SetStatus(1);
                                         game.level.nextLevel();
                                         this.Visible = false;
@@ -271,7 +273,7 @@ namespace bob_foo.Components
                         }
                         for (int i = 0; i < 10; i++)
                         {
-                            spriteBatch.DrawString(font2, i + 1 + "- " + scores.level[levelScoreDisplayed].PlayerName[i] + " " + Math.Floor(scores.level[levelScoreDisplayed].Score[i] / 1000f / 60f) + "m" + Math.Floor(scores.level[levelScoreDisplayed].Score[i] / 1000f % 60f) + "s", new Vector2(500, 240 + i * 43), Color.White);
+                            spriteBatch.DrawString(font2, i + 1 + "- " + scores.level[levelScoreDisplayed].PlayerName[i] + " " + Math.Floor(-scores.level[levelScoreDisplayed].Score[i] / 1000f / 60f) + "m" + Math.Floor(-scores.level[levelScoreDisplayed].Score[i] / 1000f % 60f) + "s", new Vector2(500, 240 + i * 43), Color.White);
                         }
                     } break;
                 case 2:

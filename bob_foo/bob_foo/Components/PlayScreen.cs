@@ -66,6 +66,7 @@ namespace bob_foo.Components
         private Boolean prevStatePauseKey;
         private Boolean start;
         private Boolean gameOver;
+        private Boolean successful;
         private Boolean reverse;
 
         //variabile che si occupa del timer
@@ -126,7 +127,7 @@ namespace bob_foo.Components
             this.Enabled = false;
             this.Visible = false;
             //inizializzo il vettore di modelli per i livelli
-            stage = new Model[1];
+            stage = new Model[3];
 
             this.bb = bb;
         }
@@ -139,7 +140,7 @@ namespace bob_foo.Components
             usingBalanceBoards = true;
             this.Enabled = false;
             this.Visible = false;
-            stage = new Model[1];
+            stage = new Model[3];
             this.balanceBoards = balanceBoards;
         }
 
@@ -151,6 +152,8 @@ namespace bob_foo.Components
             pause = false;
 
             gameOver = false;
+
+            successful = false;
 
             reverse = false;
 
@@ -194,7 +197,7 @@ namespace bob_foo.Components
             for (int i = 0; i < stage.Length; i++)
             {
                 //stage[i] = Game.Content.Load<Model>("models/pista07");
-                stage[i] = Game.Content.Load<Model>("models/PistaHard");
+                stage[i] = Game.Content.Load<Model>("models/Pista0"+i);
                 //stage[i] = Game.Content.Load<Model>("models/pista09.2");
                 //la nuova pista va girata di 90 gradi per allinearla con il bob
                 //stage[i].Root.Transform = Matrix.CreateFromYawPitchRoll(-MathHelper.PiOver2, 0, 0) * stage[i].Root.Transform;
@@ -228,7 +231,7 @@ namespace bob_foo.Components
             //creo il modello 3d collegato al modello fisico
             stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this);
             //calcolo i punti per la costruzione del piano che determina la fine del livello
-            EndPoint = stageMod.getBonePosition("Finish", Vector3.Zero);
+            EndPoint = stageMod.getBonePosition("Finish");
             
             Game.Components.Add(stageMod);
             stageMod.Visible = true;
@@ -251,7 +254,7 @@ namespace bob_foo.Components
             //per la vecchia pista
             //bobBox.Position = new Vector3(0, 0.1f, 0);
             //per la nuova pista
-            bobBox.Position = new Vector3(0, 0.25f, 0);
+            bobBox.Position = new Vector3(0, -0.3f, 0);
             //per la pista09.2
             //bobBox.Position = new Vector3(0, 4f, 0);
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
@@ -277,8 +280,14 @@ namespace bob_foo.Components
             Game.Components.Add(gamemenu);
         }
 
+        void CollisionHandler(EntityCollidable sender, Collidable other, CollidablePairHandler pair)
+        {
+
+        }
+
         public void Reset()
         {
+            successful = false;
             reverse = false;
             start = true;
             pause = false;
@@ -337,16 +346,7 @@ namespace bob_foo.Components
             
             if (!pause && !start && !gameOver)
             {
-                if (Vector3.Distance(EndPoint, bobBox.Position) < 3)
-                {
-                    gamemenu.selection = 0;
-                    gamemenu.Visible = false;
-                    Reset();
-                    gameScore.pause = true;
-                    (Game as Engine).SetScore((int)gameScore.getTime());
-                    (Game as Engine).SetStatus(2);
-                    Console.WriteLine("congratulazioni stronzo!!");
-                }
+               
                 //gestione pausa
                 if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
                 {
@@ -395,7 +395,7 @@ namespace bob_foo.Components
 
                     if (balanceBoards.Count == 1) //one bb
                     {
-                        BalanceBoardSensorsF balance = bb.WiimoteState.BalanceBoardState.SensorValuesKg;
+                        BalanceBoardSensorsF balance = balanceBoards[0].WiimoteState.BalanceBoardState.SensorValuesKg;
                         horizontaldelta = (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
                         verticaldelta = (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
                         total = (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
@@ -485,7 +485,7 @@ namespace bob_foo.Components
                         //bobBox.LinearVelocity += (0.7f * left - bobBox.LinearVelocity / 60) / 7;
                         //new mod
                         bobBox.LinearVelocity += (0.7f * left - bobBox.LinearVelocity / 60) / 7;
-                        //bobBox.AngularVelocity += (0.1f * Vector3.One - bobBox.AngularVelocity / 60) / 7;
+                        bobBox.AngularVelocity += (0.1f * Vector3.One - bobBox.AngularVelocity / 60) / 7;
                     }
                     if (KeyboardState.IsKeyDown(Keys.Right))
                     {
@@ -494,7 +494,7 @@ namespace bob_foo.Components
                         //bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
                         //new mod
                         bobBox.LinearVelocity += (0.7f * right - bobBox.LinearVelocity / 60) / 7;
-                        //bobBox.AngularVelocity -= (0.1f * Vector3.One - bobBox.LinearVelocity / 60) / 7;
+                        bobBox.AngularVelocity -= (0.1f * Vector3.One - bobBox.LinearVelocity / 60) / 7;
                     }
                 }
 
@@ -513,7 +513,7 @@ namespace bob_foo.Components
                 engineVolume += (actualForwardVelocity - previousForwardVelocity)/10;
 
                 previousForwardVelocity = actualForwardVelocity;
-                
+
                 //engineVolume = Vector3.Dot(bobBox.LinearVelocity, bobBox.OrientationMatrix.Forward) / 30;
                 //engine pitch must be bounded from -1.0f to 1.0f and volume from 0.0f to 1.0f;
                 if (engineInstance.State == SoundState.Playing)
@@ -546,6 +546,23 @@ namespace bob_foo.Components
                     
                     engineInstance.Pitch = enginePitch;
                     engineInstance.Volume = engineVolume;
+
+                    if (Vector3.Distance(EndPoint, bobBox.Position) < 4)
+                    {
+                        gameOver = true;
+                        gameScore.pause = true;
+                        gamemenu.gameOver = true;
+                        successful = true;
+                        gamemenu.Visible = true;
+                    }
+
+                    if(bobBox.Position.Y<-70)
+                    {
+                        gameOver = true;
+                        gameScore.pause = true;
+                        gamemenu.gameOver = true;
+                        gamemenu.Visible = true;
+                    }
                 }
                 //modify engine pitch, from -1.0f to 1.0f
 
@@ -569,7 +586,7 @@ namespace bob_foo.Components
                     songInstance.Play();
                     countDown.Dispose();
                     start = false;
-                    gameScore = new timeSprite(Game, 0f, new Vector2(20, 20), timeFont, Color.Black, true, 3);
+                    gameScore = new timeSprite(Game, 0f, new Vector2(20, 20), timeFont, Color.White, true, 3);
                     Game.Components.Add(gameScore);
                 }
             }
@@ -617,6 +634,7 @@ namespace bob_foo.Components
 
             else if (gameOver)
             {
+                space.Update();
                 if(KeyboardState.IsKeyDown(Keys.Enter) && !prevStateEnterKey)
                 {
                     if (gamemenu.selection == 0)
@@ -628,7 +646,10 @@ namespace bob_foo.Components
                     }
                     else
                     {
-                        goToMenu();
+                        if (successful)
+                            goToSaveScore();
+                        else
+                            goToMenu();
                     }
                 }
                 if ((KeyboardState.IsKeyDown(Keys.Up) || KeyboardState.IsKeyDown(Keys.Down)) && keyTimer > 500)
@@ -659,6 +680,16 @@ namespace bob_foo.Components
         {
             Reset();
             (Game as Engine).SetStatus(0);
+            this.Enabled = false;
+            this.Visible = false;
+            gamemenu.selection = 0;
+        }
+
+        private void goToSaveScore()
+        {
+            Reset();
+            (Game as Engine).SetScore(-(int)gameScore.getTime());
+            (Game as Engine).SetStatus(2);
             this.Enabled = false;
             this.Visible = false;
             gamemenu.selection = 0;

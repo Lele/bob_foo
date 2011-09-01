@@ -263,20 +263,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\PistaHard.fbx">
-      <Name>PistaHard</Name>
+    <Compile Include="models\Pista02.fbx">
+      <Name>Pista02</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\PistaEasy.fbx">
-      <Name>PistaEasy</Name>
+    <Compile Include="models\Pista00.fbx">
+      <Name>Pista00</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="models\PistaMedium.fbx">
-      <Name>PistaMedium</Name>
+    <Compile Include="models\Pista01.fbx">
+      <Name>Pista01</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
