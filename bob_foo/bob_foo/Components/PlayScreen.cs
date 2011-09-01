@@ -30,8 +30,7 @@ namespace bob_foo.Components
     public class PlayScreen : Microsoft.Xna.Framework.DrawableGameComponent
     {
         #region Variables
-        //graphics manager ereditato da Engine..inutile sapere cos e' :-D
-        GraphicsDeviceManager graphics;
+
         //Spazio fisico
         Space space;
         //telecamera del gioco
@@ -179,7 +178,7 @@ namespace bob_foo.Components
             for (int i = 0; i < stage.Length; i++)
             {
                 //stage[i] = Game.Content.Load<Model>("models/pista07");
-                stage[i] = Game.Content.Load<Model>("models/pista09.4");
+                stage[i] = Game.Content.Load<Model>("models/PistaHard");
                 //stage[i] = Game.Content.Load<Model>("models/pista09.2");
                 //la nuova pista va girata di 90 gradi per allinearla con il bob
                 //stage[i].Root.Transform = Matrix.CreateFromYawPitchRoll(-MathHelper.PiOver2, 0, 0) * stage[i].Root.Transform;

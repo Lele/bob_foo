@@ -191,7 +191,7 @@ namespace bob_foo.Components
                                     {
                                         game.SetStatus(1);
                                         game.level.nextLevel();
-                                         this.Visible = false;
+                                        this.Visible = false;
                                         this.Enabled = false;
                                         choosenLevel = false;
                                     }break;

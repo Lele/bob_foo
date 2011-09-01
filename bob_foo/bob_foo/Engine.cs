@@ -42,6 +42,8 @@ namespace bob_foo
             balanceBoard = new Wiimote();
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferredBackBufferWidth = 1000;
+            graphics.ToggleFullScreen();
+
             Content.RootDirectory = "Content";
             usingBalanceBoard = false;
             //old
@@ -191,7 +193,7 @@ namespace bob_foo
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             
             base.Draw(gameTime);
         }
