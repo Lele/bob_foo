@@ -2,7 +2,6 @@ Content\Resources\background.xnb
 Content\Resources\bluetoothInstruction.xnb
 Content\Resources\Elements\bang.xnb
 Content\Resources\Elements\bersaglio.xnb
-Content\Resources\Elements\bullet ground hole.xnb
 Content\Resources\Elements\bullet hole.xnb
 Content\Resources\Elements\bullet wood hole.xnb
 Content\Resources\Elements\bullet.xnb
@@ -38,3 +37,4 @@ Content\models\bob_con_bobmen_4.1.xnb
 Content\Resources\Elements\menu_piste.xnb
 Content\models\bob_con_bobmen_5.1.xnb
 Content\models\PistaHard.xnb
+Content\models\bullet ground hole.xnb

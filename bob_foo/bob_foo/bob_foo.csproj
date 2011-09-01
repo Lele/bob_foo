@@ -115,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\gameMenu.cs" />
     <Compile Include="Components\Menu.cs" />
     <Compile Include="Components\PlayScreen.cs" />
     <Compile Include="Components\SaveScore.cs" />

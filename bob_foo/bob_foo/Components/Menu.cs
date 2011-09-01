@@ -144,7 +144,14 @@ namespace bob_foo.Components
                 case 3:
                     {
                         if (/*(balanceBoards[0].WiimoteState.ButtonState.A && !prevButtonStatus) ||*/ (Keyboard.GetState().IsKeyDown(Keys.Enter) && !prevKeyStatus))
+                        {
                             section = 0;
+                            if (game.usingBalanceBoard)
+                            {
+                                for (int i=0; i < balanceBoards.Count; i++ )
+                                    balanceBoards[i].Connect();
+                            }
+                        }
                         if (Keyboard.GetState().IsKeyDown(Keys.Down) && keyDelay > 500)
                         {
                             if (game.usingBalanceBoard)
@@ -181,6 +188,11 @@ namespace bob_foo.Components
                                             else
                                                 game.level.currLevel = 2;
                                             keyDelay = 0;
+                                        }
+                                        else if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                                        {
+                                            game.level.currLevel = 0;
+                                            section = 0;
                                         }
                                         else
                                             keyDelay += gameTime.ElapsedGameTime.Milliseconds;
@@ -246,18 +258,20 @@ namespace bob_foo.Components
                     } break;
                 case 1:
                     {
-                        spriteBatch.Draw(backgroundScore, new Vector2(0, 0), Color.White);
+                        spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
                         scores = ScoreData.LoadHighScores("highscore.xml");
+                        spriteBatch.DrawString(font, "HIGHSCORES", new Vector2(80, 280), Color.White); 
+                        spriteBatch.DrawString(font, "LEVEL:" , new Vector2(80, 330), Color.DarkRed); 
                         for (int i = 0; i < 3; i++)
                         {
                             if (i == levelScoreDisplayed)
-                                spriteBatch.DrawString(font, (i + 1).ToString(), new Vector2(350 + i * 100, 100), Color.DarkRed);
+                                spriteBatch.DrawString(font, (i + 1).ToString(), new Vector2(230 + i * 80, 330), Color.DarkRed);
                             else
-                                spriteBatch.DrawString(font, (i + 1).ToString(), new Vector2(350 + i * 100, 100), Color.White);
+                                spriteBatch.DrawString(font, (i + 1).ToString(), new Vector2(230 + i * 80, 330), Color.White);
                         }
                         for (int i = 0; i < 10; i++)
                         {
-                            spriteBatch.DrawString(font2, i + 1 + "- " + scores.level[levelScoreDisplayed].PlayerName[i] + " " + Math.Floor(scores.level[levelScoreDisplayed].Score[i] / 1000f / 60f) + "m" + scores.level[levelScoreDisplayed].Score[i] / 1000f % 60f + "s", new Vector2(400, 210 + i * 43), Color.White);
+                            spriteBatch.DrawString(font2, i + 1 + "- " + scores.level[levelScoreDisplayed].PlayerName[i] + " " + Math.Floor(scores.level[levelScoreDisplayed].Score[i] / 1000f / 60f) + "m" + Math.Floor(scores.level[levelScoreDisplayed].Score[i] / 1000f % 60f) + "s", new Vector2(500, 240 + i * 43), Color.White);
                         }
                     } break;
                 case 2:

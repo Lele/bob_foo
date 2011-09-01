@@ -42,7 +42,7 @@ namespace bob_foo
             balanceBoard = new Wiimote();
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferredBackBufferWidth = 1000;
-            graphics.ToggleFullScreen();
+            //graphics.ToggleFullScreen();
 
             Content.RootDirectory = "Content";
             usingBalanceBoard = false;

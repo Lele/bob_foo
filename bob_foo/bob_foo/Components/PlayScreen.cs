@@ -48,7 +48,8 @@ namespace bob_foo.Components
         //stato della tastiera e del mouse
         public KeyboardState KeyboardState;
         public MouseState MouseState;
-        
+        private Boolean prevStateEnterKey;
+
         //numero del livello
         public int currLevel;
 
@@ -64,6 +65,8 @@ namespace bob_foo.Components
         private Boolean pause;
         private Boolean prevStatePauseKey;
         private Boolean start;
+        private Boolean gameOver;
+        private Boolean reverse;
 
         //variabile che si occupa del timer
         private timeSprite countDown;
@@ -96,12 +99,23 @@ namespace bob_foo.Components
         Boolean hyperspaceAlreadyPlayed = false;
 
         //variabili per calcolare il piano alla fine della pista
-        Vector3 firstPlanePoint;
-        Vector3 secondPlanePoint;
-        Vector3 thirdPlanePoint;
+        Vector3 EndPoint;
         Plane finishPlane;
         Vector3[] bobVertices;
         int[] bobIndices;
+
+        //punteggio di gioco, cioè tempo di percorrenza tracciato
+        private timeSprite gameScore;
+        //timer che conta il tempo in cui il bob è ribaltato
+        private timeSprite reverseTimer;
+        //Entity model del bob
+        private EntityModel bobEntity;
+        //timer per la pressione dei tasti
+        private int keyTimer;
+        //component per il menu di pausa e gameover
+        private gameMenu gamemenu;
+
+        
         #endregion
 
         public PlayScreen(Game game, Wiimote bb)
@@ -121,6 +135,7 @@ namespace bob_foo.Components
         public PlayScreen(Game game, WiimoteCollection balanceBoards)
             : base(game)
         {
+            currLevel = 0;
             usingBalanceBoards = true;
             this.Enabled = false;
             this.Visible = false;
@@ -130,11 +145,14 @@ namespace bob_foo.Components
 
         public override void Initialize()
         {
-            currLevel = 0;
 
             start = true;
 
             pause = false;
+
+            gameOver = false;
+
+            reverse = false;
 
             Camera = new Camera(this, new Vector3(0, 0, -1),Vector3.Zero, 0.09f);
 
@@ -163,14 +181,12 @@ namespace bob_foo.Components
 
             //load background music
             song = Game.Content.Load<SoundEffect>("audio/SummerSong");
-            songInstance = song.CreateInstance();
-
+            
             //load sound effects
             engine = Game.Content.Load<SoundEffect>("audio/engine_2");
-            engineInstance = engine.CreateInstance();
+            
             hyperspace = Game.Content.Load<SoundEffect>("audio/hyperspace_activate");
-            hyperspaceInsance = hyperspace.CreateInstance();
-
+            
             finalBoxMod = Game.Content.Load<Model>("models/cube");
             
 
@@ -212,13 +228,7 @@ namespace bob_foo.Components
             //creo il modello 3d collegato al modello fisico
             stageMod = new StaticModel(stage[currLevel], stageMesh.WorldTransform.Matrix, Game, this);
             //calcolo i punti per la costruzione del piano che determina la fine del livello
-            firstPlanePoint = stageMod.getBonePosition("Finish", Vector3.Zero);
-            secondPlanePoint = stageMod.getBonePosition("Finish", Vector3.Zero);
-            thirdPlanePoint = stageMod.getBonePosition("Finish", Vector3.Zero);
-            //firstPlanePoint = stageMod.getBonePosition("BoneDown", Vector3.Zero);
-            //secondPlanePoint = stageMod.getBonePosition("BoneLeft", Vector3.Zero);
-            //thirdPlanePoint = stageMod.getBonePosition("BoneRight", Vector3.Zero);
-            //finishPlane = new Plane(firstPlanePoint, secondPlanePoint, thirdPlanePoint);
+            EndPoint = stageMod.getBonePosition("Finish", Vector3.Zero);
             
             Game.Components.Add(stageMod);
             stageMod.Visible = true;
@@ -247,43 +257,53 @@ namespace bob_foo.Components
             Matrix scaling = Matrix.CreateScale(0.03f, 0.03f, 0.03f);
             //scaling = scaling * Matrix.CreateRotationZ(MathHelper.Pi);
             //Matrix rotation = Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2,0,0);
-            EntityModel model = new EntityModel(bobBox, bobMod, scaling, Game, this);
-            Game.Components.Add(model);
-            bobBox.Tag = model;
+            bobEntity = new EntityModel(bobBox, bobMod, scaling, Game, this);
+            Game.Components.Add(bobEntity);
+            bobBox.Tag = bobEntity;
             space.Add(bobBox);
-            model.Visible = true;
-            model.Enabled = true;
+            bobEntity.Visible = true;
+            bobEntity.Enabled = true;
 
-            //creo una scatola e la posiziono in fondo alla pista
-            finalBox = new Box(Vector3.Zero, 0.5f, 0.5f, 0.5f);
-            finalBox.Position = thirdPlanePoint;
-            finalBox.CollisionInformation.Events.InitialCollisionDetected += HandleStageEnd;
-            EntityModel finalBoxModel = new EntityModel(finalBox, finalBoxMod, Matrix.CreateScale(0.5f,0.5f,0.5f), Game, this);
-            //Game.Components.Add(finalBoxModel);
-            finalBoxModel.Visible = true;
-            finalBoxModel.Enabled = true;
-            
             //space.Add(finalBox);
 
             //sposto la telecamera per avere effetto introduzione
-            Camera.Position = new Vector3(500, 500, 500);
+            Camera.Position = new Vector3(400, 400, 400);
+
+            songInstance = song.CreateInstance();
+            hyperspaceInsance = hyperspace.CreateInstance();
+            engineInstance = engine.CreateInstance();
+
+            gamemenu = new gameMenu(Game, timeFont);
+            Game.Components.Add(gamemenu);
         }
 
-        void HandleStageEnd(EntityCollidable sender, Collidable other, CollidablePairHandler pair)
+        public void Reset()
         {
-                Console.WriteLine("sei arrivato alla fine!");
-        }
-        
-        //metodo non utilizzato per la gestione di un evento collisione
-        void HandleCollision(EntityCollidable sender, Collidable other, CollidablePairHandler pair)
-        {
-            var otherEntityInformation = other as EntityCollidable;
-            if (otherEntityInformation != null)
+            reverse = false;
+            start = true;
+            pause = false;
+            gameOver = false;
+            Camera = null;
+            Game.Components.Remove(gameScore);
+            Game.Components.Remove(countDown);
+            countDown = null;
+            Game.Components.Remove(bobEntity);
+            space.Remove(stageMesh);
+            Game.Components.Remove(stageMod);
+            space.Remove(bobBox);
+            Game.Components.Remove(bgMod);
+            Game.Components.Remove(gamemenu);
+            songInstance.Stop();
+            if (engineInstance.State == SoundState.Playing)
             {
-                space.Remove(otherEntityInformation.Entity); 
-                Game.Components.Remove((EntityModel)otherEntityInformation.Entity.Tag);
+                engineInstance.Stop();
             }
+            if (hyperspaceInsance.State == SoundState.Playing)
+                hyperspaceInsance.Stop();
+            Initialize();
         }
+
+     
 
         protected override void UnloadContent()
         {
@@ -314,15 +334,48 @@ namespace bob_foo.Components
             //ricavo la direzione top-down del bob e applico un'accellerazione in questa direzione per tenerlo il piu' possibile incollato alla  pista
             Vector3 dw = bobBox.OrientationMatrix.Down;
             bobBox.LinearVelocity += (0.1f * dw - bobBox.LinearVelocity / 60) / 7;
-
-            if (!pause && !start)
+            
+            if (!pause && !start && !gameOver)
             {
                 //gestione pausa
                 if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
+                {
                     pause = true;
-
+                    gamemenu.pause = true;
+                    gamemenu.Visible = true;
+                    if (reverseTimer != null)
+                        reverseTimer.pause = true;
+                    if (gameScore != null)
+                        gameScore.pause = true;
+                }
                 //aggiorno la fisica del gioco
                 space.Update();
+
+                if (bobBox.OrientationMatrix.Down.Y > 0.70 && !reverse)
+                {
+                    Console.WriteLine("Ti sei ribaltato!!");
+                    reverse = true;
+                    reverseTimer = new timeSprite(Game, 3000f, new Vector2(465, 220), timeFont, Color.Red, false, 0);
+                    reverseTimer.stringToAppend = "reversed ";
+                    Game.Components.Add(reverseTimer);
+                }
+                else if (bobBox.OrientationMatrix.Down.Y <=  0.70)
+                {
+                    reverse = false;
+                    if (reverseTimer != null)
+                    {
+                        Game.Components.Remove(reverseTimer);
+                    }
+                }
+                if (reverseTimer != null && reverseTimer.timeOver)
+                {
+                    Game.Components.Remove(reverseTimer);
+                    reverseTimer = null;
+                    gameOver = true;
+                    gameScore.pause = true;
+                    gamemenu.gameOver = true;
+                    gamemenu.Visible = true;
+                }
 
                 if ((Game as Engine).usingBalanceBoard) //update with balance board
                 {
@@ -498,7 +551,7 @@ namespace bob_foo.Components
 
                 if (countDown == null)
                 {
-                    countDown = new timeSprite(Game, 3000f, new Vector2(465, 220), timeFont, Color.AliceBlue);
+                    countDown = new timeSprite(Game, 3000f, new Vector2(465, 220), timeFont, Color.DarkRed, false, 0);
                     Game.Components.Add(countDown);
                 }
                 else if (countDown.timeOver)
@@ -507,14 +560,77 @@ namespace bob_foo.Components
                     songInstance.Play();
                     countDown.Dispose();
                     start = false;
-                    //computeStartingSpeed() <-- da fare
+                    gameScore = new timeSprite(Game, 0f, new Vector2(20, 20), timeFont, Color.Black, true, 3);
+                    Game.Components.Add(gameScore);
                 }
             }
 
             else if (pause)
             {
-                if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
-                    pause = false;
+                if (KeyboardState.IsKeyDown(Keys.Enter) && !prevStateEnterKey)
+                {
+                    if (gamemenu.selection == 0)
+                    {
+                        pause = false;
+                        gamemenu.pause = false;
+                        gamemenu.Visible = false;
+                    }
+                    else if (gamemenu.selection == 1)
+                    {
+                        gamemenu.selection = 0;
+                        gamemenu.Visible = false;
+                        Reset();
+                        nextLevel();
+                    }
+                    else if (gamemenu.selection == 2)
+                    {
+                        goToMenu();
+                    }
+                }
+                if (KeyboardState.IsKeyDown(Keys.Down) && keyTimer > 500)
+                {
+                    if (gamemenu.selection < 2)
+                        gamemenu.selection++;
+                    else
+                        gamemenu.selection = 0;
+                    keyTimer = 0;
+                }
+                if (KeyboardState.IsKeyDown(Keys.Up) && keyTimer > 500)
+                {
+                    if (gamemenu.selection > 0)
+                        gamemenu.selection--;
+                    else
+                        gamemenu.selection = 2;
+                    keyTimer = 0;
+                }
+                keyTimer += gameTime.ElapsedGameTime.Milliseconds;
+            }
+
+            else if (gameOver)
+            {
+                if(KeyboardState.IsKeyDown(Keys.Enter) && !prevStateEnterKey)
+                {
+                    if (gamemenu.selection == 0)
+                    {
+                        Reset();
+                        nextLevel();
+                        gamemenu.Visible = false;
+                        gamemenu.selection = 0;
+                    }
+                    else
+                    {
+                        goToMenu();
+                    }
+                }
+                if ((KeyboardState.IsKeyDown(Keys.Up) || KeyboardState.IsKeyDown(Keys.Down)) && keyTimer > 500)
+                {
+                    if (gamemenu.selection == 1)
+                        gamemenu.selection = 0;
+                    else
+                        gamemenu.selection = 1;
+                    keyTimer = 0;
+                }
+                keyTimer += gameTime.ElapsedGameTime.Milliseconds;
             }
 
             prevStatePauseKey = KeyboardState.IsKeyDown(Keys.P);
@@ -525,10 +641,18 @@ namespace bob_foo.Components
        
         public override void Draw(GameTime gameTime)
         {
-
-            // TODO: Add your drawing code here
-
+            
             base.Draw(gameTime);
+            
+        }
+
+        private void goToMenu()
+        {
+            Reset();
+            (Game as Engine).SetStatus(0);
+            this.Enabled = false;
+            this.Visible = false;
+            gamemenu.selection = 0;
         }
 
         private void boundingBoxTasks()

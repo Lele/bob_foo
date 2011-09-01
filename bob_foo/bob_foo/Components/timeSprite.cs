@@ -25,6 +25,10 @@ namespace bob_foo.Components
         private SpriteBatch spriteBatch;
         public Boolean timeOver;
         private Color color;
+        private Boolean clockwise;
+        private int precision;
+        public Boolean pause;
+        public string stringToAppend;
 
         public timeSprite(Game game, String text, SpriteFont font, float delay, Vector2 position, Color color)
             : base(game)
@@ -35,9 +39,13 @@ namespace bob_foo.Components
             this.position = position;
             this.color = color;
             this.timeOver = false;
+            stringToAppend = "";
+            this.clockwise = false;
+            pause = false;
+            this.precision = 0;
         }
 
-        public timeSprite(Game game, float delay, Vector2 position, SpriteFont font, Color color)
+        public timeSprite(Game game, float delay, Vector2 position, SpriteFont font, Color color, Boolean clockwise, int precision)
             : base(game)
         {
             this.font = font;
@@ -45,6 +53,9 @@ namespace bob_foo.Components
             this.color = color;
             this.position = position;
             this.timeOver = false;
+            this.clockwise = clockwise;
+            // # of digit after the dot
+            this.precision = precision;
         }
 
         public timeSprite(Game game, Texture2D texture, float delay, Vector2 position)
@@ -55,6 +66,8 @@ namespace bob_foo.Components
             this.delay = delay;
             this.position = position;
             this.timeOver = false;
+            this.clockwise = false;
+            this.precision = 0;
         }
 
         public override void Initialize()
@@ -65,10 +78,16 @@ namespace bob_foo.Components
 
         public override void Update(GameTime gameTime)
         {
-            delay -= gameTime.ElapsedGameTime.Milliseconds;
-            if (delay < 0)
+            if(!pause)
             {
-                this.timeOver = true;
+                if (!clockwise)
+                    delay -= gameTime.ElapsedGameTime.Milliseconds;
+                else
+                    delay += gameTime.ElapsedGameTime.Milliseconds;
+                if (delay < 0)
+                {
+                    this.timeOver = true;
+                }
             }
             base.Update(gameTime);
         }
@@ -78,12 +97,16 @@ namespace bob_foo.Components
             {
                 spriteBatch.Begin();
                 if (text != null)
-                    this.spriteBatch.DrawString(font, text, position, color);
+                    this.spriteBatch.DrawString(font,stringToAppend + text, position, color);
                 else if (texture != null)
                     this.spriteBatch.Draw(texture, position, null, color, 0f,new Vector2(texture.Width/2,texture.Height/2),Vector2.One,SpriteEffects.None,0);
+                else if(precision == 0)
+                   // if(precision == 0)
+                   //     this.spriteBatch.DrawString(font, Convert.ToString(Math.Ceiling(delay / 1000)), position, color);
+                   // else
+                    this.spriteBatch.DrawString(font, stringToAppend + Convert.ToString(Math.Ceiling(delay / 1000 * Math.Pow(10, precision))), position, color);
                 else
-                    this.spriteBatch.DrawString(font, Convert.ToString(Math.Ceiling(delay / 1000)), position, color);
-
+                    this.spriteBatch.DrawString(font, stringToAppend + Math.Floor(delay/1000f/60f)+"m"+Math.Floor(delay/1000f%60f)+"s", position, color);
                 spriteBatch.End();
                 GraphicsDevice.BlendState = BlendState.Opaque;
                 GraphicsDevice.DepthStencilState = DepthStencilState.Default;

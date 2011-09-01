@@ -62,7 +62,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Resources\Elements\bullet ground hole.png">
+    <Compile Include="models\bullet ground hole.png">
       <Name>bullet ground hole</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -265,13 +265,6 @@
       <Name>menu_piste</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="models\bob_con_bobmen_5.1.fbx">
-      <Name>bob_con_bobmen_5.1</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

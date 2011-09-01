@@ -70,13 +70,13 @@ namespace bob_foo.DrawableContents3D
             //alla bone voluta
 
             ModelBone bone = model.Bones[boneName];
-
+            fromOriginToBoneTransform = bone.Transform * Transform;
             //costruisco la matrice, moltiplicando a destra la matrice del genitore
             //nota che all'ultimo passo la matrice di destra sarà equivalente alla matrice di trasformazione
             //che dal centro mi porta al centro del modello
-            while(bone!=null)
+            while(bone.Parent!=null)
             {
-                fromOriginToBoneTransform = fromOriginToBoneTransform * bone.Transform;
+                fromOriginToBoneTransform = fromOriginToBoneTransform * bone.Parent.Transform;
                 bone = bone.Parent;
             }
 
