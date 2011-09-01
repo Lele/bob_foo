@@ -62,11 +62,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="models\bullet ground hole.png">
-      <Name>bullet ground hole</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Resources\Elements\bullet hole.png">
       <Name>bullet hole</Name>
       <Importer>TextureImporter</Importer>

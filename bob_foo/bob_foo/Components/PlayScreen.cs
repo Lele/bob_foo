@@ -343,7 +343,8 @@ namespace bob_foo.Components
                     gamemenu.Visible = false;
                     Reset();
                     gameScore.pause = true;
-                    (Game as Engine).SetScore(gameScore.getTime());
+                    (Game as Engine).SetScore((int)gameScore.getTime());
+                    (Game as Engine).SetStatus(2);
                     Console.WriteLine("congratulazioni stronzo!!");
                 }
                 //gestione pausa
