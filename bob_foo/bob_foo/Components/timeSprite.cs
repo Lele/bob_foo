@@ -115,5 +115,9 @@ namespace bob_foo.Components
 
             }
         }
+           public float getTime()
+           {
+               return delay;
+           }
     }
 }

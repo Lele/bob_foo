@@ -337,6 +337,15 @@ namespace bob_foo.Components
             
             if (!pause && !start && !gameOver)
             {
+                if (Vector3.Distance(EndPoint, bobBox.Position) < 3)
+                {
+                    gamemenu.selection = 0;
+                    gamemenu.Visible = false;
+                    Reset();
+                    gameScore.pause = true;
+                    (Game as Engine).SetScore(gameScore.getTime());
+                    Console.WriteLine("congratulazioni stronzo!!");
+                }
                 //gestione pausa
                 if (KeyboardState.IsKeyDown(Keys.P) && prevStatePauseKey == false)
                 {
@@ -353,7 +362,6 @@ namespace bob_foo.Components
 
                 if (bobBox.OrientationMatrix.Down.Y > 0.70 && !reverse)
                 {
-                    Console.WriteLine("Ti sei ribaltato!!");
                     reverse = true;
                     reverseTimer = new timeSprite(Game, 3000f, new Vector2(465, 220), timeFont, Color.Red, false, 0);
                     reverseTimer.stringToAppend = "reversed ";
