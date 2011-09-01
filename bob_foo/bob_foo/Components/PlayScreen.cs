@@ -119,19 +119,6 @@ namespace bob_foo.Components
         
         #endregion
 
-        public PlayScreen(Game game, Wiimote bb)
-            :base(game)
-        {
-
-            //disabilitiamo il componente per le altre fasi di gioco. saranno settate a true alla pressione di New Game
-            this.Enabled = false;
-            this.Visible = false;
-            //inizializzo il vettore di modelli per i livelli
-            stage = new Model[3];
-
-            this.bb = bb;
-        }
-
         //overloading, metodo da usare con più balanceboards
         public PlayScreen(Game game, WiimoteCollection balanceBoards)
             : base(game)
@@ -393,30 +380,20 @@ namespace bob_foo.Components
                     float verticaldelta = 0;
                     float total = 0;
 
-                    if (balanceBoards.Count == 1) //one bb
+                    for (int i = 0; i < balanceBoards.Count; i++)
                     {
-                        BalanceBoardSensorsF balance = balanceBoards[0].WiimoteState.BalanceBoardState.SensorValuesKg;
-                        horizontaldelta = (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
-                        verticaldelta = (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
-                        total = (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
-                    }
+                        BalanceBoardSensorsF balance = balanceBoards[i].WiimoteState.BalanceBoardState.SensorValuesKg;
+                        //sommo tutti i contributi di tutte le balanceboards
+                        horizontaldelta += (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
+                        verticaldelta += (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
+                        total += (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
 
-                    if (balanceBoards.Count > 1) //more bb
-                    {
-                        for (int i = 0; i < balanceBoards.Count; i++)
-                        {
-                            BalanceBoardSensorsF balance = balanceBoards[i].WiimoteState.BalanceBoardState.SensorValuesKg;
-                            //sommo tutti i contributi di tutte le balanceboards
-                            horizontaldelta += (balance.BottomRight + balance.TopRight) - (balance.BottomLeft + balance.TopLeft);
-                            verticaldelta += (balance.TopLeft + balance.TopRight) - (balance.BottomLeft + balance.BottomRight);
-                            total += (balance.TopLeft + balance.TopRight) + (balance.BottomLeft + balance.BottomRight);
-
-                        }
-                        //faccio la media
-                        horizontaldelta = horizontaldelta / balanceBoards.Count;
-                        verticaldelta = verticaldelta / balanceBoards.Count;
-                        total = total / balanceBoards.Count;
                     }
+                    //faccio la media
+                    horizontaldelta = horizontaldelta / balanceBoards.Count;
+                    verticaldelta = verticaldelta / balanceBoards.Count;
+                    total = total / balanceBoards.Count;
+                    
                     
                     //logica di spostamento
                     if (total > 30) //per evitare spostamenti non voluti, visto che il corpo non sarà mai perfettamente fermo
@@ -425,7 +402,7 @@ namespace bob_foo.Components
                         float forwardThreshold = 0.5f;
                         float lateralThreshold = 0.5f;
                         float forwardMovement = (verticaldelta / total)/(Game as Engine).sensibility;
-                        float lateralMovement = (0.2f*horizontaldelta / total)/(Game as Engine).sensibility; //0.2 è per limitare il movimento laterale
+                        float lateralMovement = (0.05f*horizontaldelta / total)/(Game as Engine).sensibility; //0.2 è per limitare il movimento laterale
 
                         //gestione dei trashold per evitare che ci siano movimenti esagerati
                         if (verticaldelta / total > forwardThreshold)
@@ -454,12 +431,14 @@ namespace bob_foo.Components
                         {
                             Vector3 left = bobBox.OrientationMatrix.Left;
                             bobBox.LinearVelocity += (-lateralMovement * left - bobBox.LinearVelocity / 60) / 7;
+                            bobBox.AngularVelocity += (0.5f * Vector3.One - bobBox.AngularVelocity / 60) / 7;
                         }
 
                         if (lateralMovement > 0.2)
                         {
                             Vector3 right = bobBox.OrientationMatrix.Right;
                             bobBox.LinearVelocity += (lateralMovement * right - bobBox.LinearVelocity / 60) / 7;
+                            bobBox.AngularVelocity -= (0.5f * Vector3.One - bobBox.LinearVelocity / 60) / 7;
                         }
 
                     }
@@ -547,8 +526,12 @@ namespace bob_foo.Components
                     engineInstance.Pitch = enginePitch;
                     engineInstance.Volume = engineVolume;
 
-                    if (Vector3.Distance(EndPoint, bobBox.Position) < 4)
+                    if (Vector3.Distance(EndPoint, bobBox.Position) < 5)
                     {
+                        if (reverseTimer != null)
+                        {
+                            reverseTimer.pause = true;
+                        }
                         gameOver = true;
                         gameScore.pause = true;
                         gamemenu.gameOver = true;
@@ -558,6 +541,10 @@ namespace bob_foo.Components
 
                     if(bobBox.Position.Y<-70)
                     {
+                        if (reverseTimer != null)
+                        {
+                            reverseTimer.pause = true;
+                        }
                         gameOver = true;
                         gameScore.pause = true;
                         gamemenu.gameOver = true;
@@ -583,6 +570,7 @@ namespace bob_foo.Components
                 else if (countDown.timeOver)
                 {
                     songInstance.Volume = 0.2f;
+                    songInstance.IsLooped = true;
                     songInstance.Play();
                     countDown.Dispose();
                     start = false;

@@ -5,21 +5,21 @@
       <PlayerName>
         <string>LELE</string>
         <string>EL</string>
+        <string>SIMO</string>
         <string>LELE</string>
+        <string>SIMO</string>
         <string>ALEX</string>
         <string>PAOLA</string>
         <string>LELE</string>
         <string>TEO</string>
         <string>FRANCO</string>
-        <string>GIULIANO</string>
-        <string>TOMMASO</string>
       </PlayerName>
       <Score>
         <int>-49248</int>
         <int>-51248</int>
+        <int>-51328</int>
         <int>-52112</int>
-        <int>-68000</int>
-        <int>-68000</int>
+        <int>-55456</int>
         <int>-68000</int>
         <int>-68000</int>
         <int>-68000</int>
@@ -57,22 +57,22 @@
     </LevelScoreData>
     <LevelScoreData>
       <PlayerName>
+        <string>SIMONE</string>
+        <string>SIMO</string>
+        <string>SIMO</string>
+        <string>SIMO</string>
         <string>ALEX</string>
         <string>PAOLA</string>
         <string>LELE</string>
         <string>TEO</string>
         <string>FRANCO</string>
         <string>GIULIANO</string>
-        <string>TOMMASO</string>
-        <string>NICO</string>
-        <string>MANUEL</string>
-        <string>ANDREA</string>
       </PlayerName>
       <Score>
-        <int>-68000</int>
-        <int>-68000</int>
-        <int>-68000</int>
-        <int>-68000</int>
+        <int>-41584</int>
+        <int>-42432</int>
+        <int>-43120</int>
+        <int>-54992</int>
         <int>-68000</int>
         <int>-68000</int>
         <int>-68000</int>

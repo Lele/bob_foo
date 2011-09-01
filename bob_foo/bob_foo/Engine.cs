@@ -42,7 +42,7 @@ namespace bob_foo
             balanceBoard = new Wiimote();
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferredBackBufferWidth = 1000;
-            //graphics.ToggleFullScreen();
+            graphics.ToggleFullScreen();
 
             Content.RootDirectory = "Content";
             usingBalanceBoard = false;
@@ -70,7 +70,7 @@ namespace bob_foo
         {
             // TODO: Add your initialization logic here
             
-            this.sensibility = 0.4f;
+            this.sensibility = 0.25f;
             this.InitScores();
             base.Initialize();
         }
