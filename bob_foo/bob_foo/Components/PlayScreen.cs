@@ -683,32 +683,5 @@ namespace bob_foo.Components
             gamemenu.selection = 0;
         }
 
-        private void boundingBoxTasks()
-        {
-            //controllo se sono arrivato alla fine
-            //quindi calcolo la boundingbox
-            //BoundingSphere bobBoundingSphere = BoundingSphere.CreateFromPoints(bobVertices);
-            //ricalcolo la bounding box trasformando i vertici nella posizione attuale
-            Matrix trasformazioneBob = bobMod.Root.Transform;
-            /*int i;
-            for (i=0; i < bobVertices.Length; i++)
-            {
-                bobVertices[i] = Vector3.Transform(bobVertices[i], trasformazioneBob);
-            }*/
-            //Vector3[] newBobVertices;
-            Vector3.Transform(bobVertices, ref trasformazioneBob, bobVertices);
-
-
-            BoundingBox bobBoundingBox = BoundingBox.CreateFromPoints(bobVertices);
-
-            //la testo contro il piano
-            PlaneIntersectionType intersectionType = finishPlane.Intersects(bobBoundingBox);
-            if (intersectionType.GetType().Equals(PlaneIntersectionType.Intersecting))
-            {
-                Console.WriteLine("Sei arrivato alla fine");
-            }
-
-        }
-
     }
 }

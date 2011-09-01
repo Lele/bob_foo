@@ -27,7 +27,6 @@ namespace bob_foo
         public SpriteBatch spriteBatch;
         private Wiimote balanceBoard;//old
         private WiimoteCollection balanceBoards; //multiple balanceBoards!!!
-        private Texture2D background;
         public PlayScreen level;
         private SaveScore saveScore;
         private Menu menu;
@@ -140,7 +139,7 @@ namespace bob_foo
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            background = this.Content.Load<Texture2D>("Resources/background");
+            //background = this.Content.Load<Texture2D>("Resources/background");
             //level.LoadContent();
             // TODO: use this.Content to load your game content here
         }
